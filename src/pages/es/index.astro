@@ -6,12 +6,25 @@ import ServiceCard from '../../components/ServiceCard.astro';
 import { useTranslations } from '../../i18n/index';
 
 const t = useTranslations('es');
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": t('faq.q1'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a1') } },
+    { "@type": "Question", "name": t('faq.q2'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a2') } },
+    { "@type": "Question", "name": t('faq.q3'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a3') } },
+    { "@type": "Question", "name": t('faq.q4'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a4') } },
+    { "@type": "Question", "name": t('faq.q5'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a5') } },
+  ]
+});
 ---
 
 <BaseLayout
   title={t('seo.home_title')}
   description={t('seo.home_description')}
 >
+  <script type="application/ld+json" set:html={faqSchema} slot="head" />
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="container">
