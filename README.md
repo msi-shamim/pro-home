@@ -1,3 +1,5 @@
+![PRO HOME® — Experts in B2B Contracts & Investment](public/og-default.png)
+
 # PRO HOME®
 
 **Premium property management in Antofagasta, Chile.**
