@@ -118,6 +118,32 @@ npm run preview
 
 ---
 
+## 🎯 Sales Funnels
+
+### Funnel 1 — Property Acquisition (B2C / Investors)
+
+Attracts property owners who want PRO HOME® to manage their properties.
+
+| Stage | Detail |
+|-------|--------|
+| **Traffic** | Instagram/Facebook ads + Organic SEO ("Administración de propiedades Antofagasta") |
+| **Landing** | `/*/propietarios` — Dedicated page addressing landlord pain points ("¿Cansado de tener problemas con arrendatarios?") with the PRO HOME® solution (B2B contracts, full management) |
+| **Conversion** | "Free Assessment" lead capture form (Name, Property Details, WhatsApp) |
+| **Automation** | Form → WhatsApp auto-message → CRM injection → Automated email sequence with success metrics |
+
+### Funnel 2 — Corporate Housing Logistics (B2B)
+
+Secures bulk rental contracts with large corporations (mining sector, Exponor events).
+
+| Stage | Detail |
+|-------|--------|
+| **Traffic** | LinkedIn outreach + Direct sales + SEO ("Alojamiento corporativo Antofagasta") |
+| **Landing** | `/*/empresas` — Corporate-focused page showcasing full logistics capability for companies |
+| **Conversion** | "Request Corporate Proposal" form |
+| **Automation** | High-priority B2B leads routed directly to sales rep via instant notification, bypassing generic queues |
+
+---
+
 ## 📞 Contact
 
 - **Phone:** (+569) 3131 9706
