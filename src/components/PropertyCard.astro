@@ -9,16 +9,22 @@ interface Props {
   baths?: string;
   area?: string;
   href?: string;
+  image?: string;
 }
 
-const { title, price, address, type, typeLabel, beds, baths, area, href = '#' } = Astro.props;
+const { title, price, address, type, typeLabel, beds, baths, area, href = '#', image } = Astro.props;
 ---
 
 <a href={href} class="property-card" id={`property-${title.replace(/\s+/g, '-').toLowerCase().slice(0, 20)}`}>
-  <!-- Image Placeholder -->
+  <!-- Image -->
   <div class="property-card__image">
     <span class:list={['property-card__badge', `property-card__badge--${type}`]}>{typeLabel}</span>
-    <div class="property-card__logo">PRO HOME®</div>
+    {image ? (
+      <img src={image} alt={title} loading="lazy" />
+    ) : (
+      <div class="property-card__logo">PRO HOME®</div>
+    )}
+    <div class="property-card__hologram">PRO HOME®</div>
   </div>
 
   <!-- Info -->
@@ -69,11 +75,21 @@ const { title, price, address, type, typeLabel, beds, baths, area, href = '#' } 
 
   .property-card__image {
     position: relative;
-    height: 200px;
+    height: 220px;
     background: var(--color-muted-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+  }
+
+  .property-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-normal);
+  }
+
+  .property-card:hover .property-card__image img {
+    transform: scale(1.05);
   }
 
   .property-card__badge {
@@ -85,6 +101,7 @@ const { title, price, address, type, typeLabel, beds, baths, area, href = '#' } 
     font-weight: var(--font-weight-bold);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wider);
+    z-index: 1;
   }
 
   .property-card__badge--arriendo {
@@ -96,6 +113,22 @@ const { title, price, address, type, typeLabel, beds, baths, area, href = '#' } 
     background: var(--color-bg);
     color: var(--color-accent);
     border: 1px solid var(--color-accent);
+  }
+
+  .property-card__hologram {
+    position: absolute;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    font-size: 0.65rem;
+    font-weight: var(--font-weight-black);
+    letter-spacing: var(--letter-spacing-wider);
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1;
+    pointer-events: none;
   }
 
   .property-card__logo {
