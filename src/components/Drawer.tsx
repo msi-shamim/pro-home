@@ -96,13 +96,12 @@ export default function Drawer({ isOpen, onClose, links, currentLang, currentPat
             >
               <span
                 style={{
-                  fontWeight: 'var(--font-weight-black)',
                   fontSize: 'var(--font-size-lg)',
                   letterSpacing: 'var(--letter-spacing-tight)',
                   color: 'var(--color-accent)',
                 }}
               >
-                PRO HOME®
+                <span style={{ fontWeight: 900 }}>PRO</span>{' '}<span style={{ fontWeight: 300 }}>HOME</span>®
               </span>
               <motion.button
                 whileTap={{ scale: 0.9 }}

@@ -33,7 +33,7 @@ const { lang, currentPath, translations, servicesDropdown } = Astro.props;
   <div class="navbar__inner container">
     <!-- Logo -->
     <a href={`/${lang}`} class="navbar__logo" aria-label="PRO HOME® - Home">
-      <span class="navbar__logo-text">PRO HOME<sup>®</sup></span>
+      <span class="navbar__logo-text"><span class="logo-bold">PRO</span> <span class="logo-thin">HOME</span><sup>®</sup></span>
     </a>
 
     <!-- Navigation Links -->
@@ -123,6 +123,14 @@ const { lang, currentPath, translations, servicesDropdown } = Astro.props;
   .navbar__logo-text sup {
     font-size: 0.5em;
     vertical-align: super;
+  }
+
+  .logo-bold {
+    font-weight: var(--font-weight-black);
+  }
+
+  .logo-thin {
+    font-weight: var(--font-weight-light);
   }
 
   /* Nav Links */

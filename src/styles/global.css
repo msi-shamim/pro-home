@@ -107,6 +107,10 @@
   --z-toast:    700;
 }
 
+/* ---------- Logo Typography ---------- */
+.logo-bold { font-weight: var(--font-weight-black); }
+.logo-thin { font-weight: var(--font-weight-light); }
+
 /* ---------- Dark Mode ---------- */
 [data-theme="dark"] {
   --color-bg:        #000000;   /* 60% black */
