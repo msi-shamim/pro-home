@@ -1,46 +1,132 @@
-# Astro Starter Kit: Basics
+# PRO HOME®
 
-```sh
-npm create astro@latest -- --template basics
+**Premium property management in Antofagasta, Chile.**
+
+> Experts in B2B contracts & real estate investment.
+
+---
+
+## 🏠 About
+
+PRO HOME® is a bilingual (ES/EN) property management website built for a real estate agency specializing in B2B contracts, corporate housing, and investment services in Antofagasta, Chile.
+
+**Live:** [www.pro-home.cl](https://www.pro-home.cl)
+
+---
+
+## ⚡ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | [Astro](https://astro.build) v6 |
+| **UI Components** | React 19 + Framer Motion |
+| **Styling** | Vanilla CSS with design tokens |
+| **i18n** | Custom ES/EN bilingual system |
+| **SEO** | Structured data (JSON-LD), hreflang, OG/Twitter cards |
+| **Sitemap** | `@astrojs/sitemap` with i18n locales |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/        # Reusable Astro & React components
+│   ├── Navbar.astro       # Desktop navigation
+│   ├── Drawer.tsx         # Mobile drawer (Framer Motion)
+│   ├── Footer.astro       # Footer with newsletter & social links
+│   ├── PropertyCard.astro # Property listing card with Unsplash images
+│   ├── SEOHead.astro      # Meta tags, OG, hreflang, structured data
+│   └── ...
+├── i18n/              # Bilingual translation files
+│   ├── en.json
+│   ├── es.json
+│   └── index.ts
+├── layouts/
+│   └── BaseLayout.astro   # Shared layout (Navbar + Footer + SEO)
+├── pages/
+│   ├── en/                # English routes
+│   └── es/                # Spanish routes
+│       ├── index.astro        # Homepage
+│       ├── propiedades.astro  # Properties listing
+│       ├── reservar.astro     # Reservation page
+│       ├── contacto.astro     # Contact page
+│       ├── empresas.astro     # B2B funnel
+│       ├── propietarios.astro # Owners funnel
+│       └── servicios/         # Service detail pages
+└── styles/
+    └── global.css         # Design tokens & global styles
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🚀 Getting Started
 
-Inside of your Astro project, you'll see the following folders and files:
+```bash
+# Install dependencies
+npm install
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+**Requirements:** Node.js ≥ 22.12.0
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+## 🌐 Pages
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Route | Description |
+|-------|-------------|
+| `/es` · `/en` | Homepage with hero, benefits, services, FAQ, reviews, map |
+| `/*/propiedades` | Property listings with Unsplash images & filters |
+| `/*/reservar` | Booking page with WhatsApp integration |
+| `/*/contacto` | Contact form & Google Maps embed |
+| `/*/servicios` | Services overview + 7 detail pages |
+| `/*/empresas` | B2B corporate funnel |
+| `/*/propietarios` | Property owners funnel |
+| `/*/por-que-pro-home` | Why PRO HOME® page |
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🎨 Design System
+
+- **60-30-10 color rule** — monochrome with accent
+- **Typography** — Inter font family with bold/thin logo treatment
+- **Dark mode** — Full theme toggle with system preference detection
+- **Animations** — Scroll-reveal + Framer Motion micro-interactions
+- **Mobile** — Responsive with bottom tab nav + animated drawer
+
+---
+
+## 📊 SEO Features
+
+- ✅ Canonical URLs & hreflang (es-CL / en-US)
+- ✅ Open Graph & Twitter Card meta tags
+- ✅ RealEstateAgent structured data (JSON-LD)
+- ✅ FAQPage schema for rich snippets
+- ✅ Auto-generated sitemap with i18n
+- ✅ robots.txt
+- ✅ SVG favicon + ICO fallback
+- ✅ Geo-region meta tags (Antofagasta, CL)
+
+---
+
+## 📞 Contact
+
+- **Phone:** (+569) 3131 9706
+- **Email:** contacto@pro-home.cl
+- **Office:** Av. Balmaceda 2455, Of. 1209, Antofagasta
+- **Instagram:** [@_pro_home_](https://www.instagram.com/_pro_home_/)
+
+---
+
+## 📄 License
+
+All rights reserved © PRO HOME®
