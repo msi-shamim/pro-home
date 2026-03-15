@@ -123,10 +123,16 @@ npm run preview
 - **Phone:** (+569) 3131 9706
 - **Email:** contacto@pro-home.cl
 - **Office:** Av. Balmaceda 2455, Of. 1209, Antofagasta
-- **Instagram:** [@_pro_home_](https://www.instagram.com/_pro_home_/)
+- **Instagram:** [@_pro_home](https://www.instagram.com/_pro_home/)
 
 ---
 
 ## 📄 License
 
 All rights reserved © PRO HOME®
+
+---
+
+## 🛠️ Built by
+
+Designed & developed by [**Increments Inc.**](https://incrementsinc.com)
