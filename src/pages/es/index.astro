@@ -121,6 +121,52 @@ const t = useTranslations('es');
       </div>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title" data-reveal>{t('faq.title')}</h2>
+      <div class="faq__list">
+        <details class="faq__item" data-reveal data-reveal-delay="1">
+          <summary class="faq__question">{t('faq.q1')}</summary>
+          <p class="faq__answer">{t('faq.a1')}</p>
+        </details>
+        <details class="faq__item" data-reveal data-reveal-delay="2">
+          <summary class="faq__question">{t('faq.q2')}</summary>
+          <p class="faq__answer">{t('faq.a2')}</p>
+        </details>
+        <details class="faq__item" data-reveal data-reveal-delay="3">
+          <summary class="faq__question">{t('faq.q3')}</summary>
+          <p class="faq__answer">{t('faq.a3')}</p>
+        </details>
+        <details class="faq__item" data-reveal data-reveal-delay="4">
+          <summary class="faq__question">{t('faq.q4')}</summary>
+          <p class="faq__answer">{t('faq.a4')}</p>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary class="faq__question">{t('faq.q5')}</summary>
+          <p class="faq__answer">{t('faq.a5')}</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section" id="map" data-reveal>
+    <div class="map-section__wrapper">
+      <iframe
+        id="homepage-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.5!2d-70.3975!3d-23.6509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96a04efce526eb5d%3A0x4b0ae6b8ce7d1f0!2sAv.%20Balmaceda%202455%2C%20Antofagasta%2C%20Chile!5e0!3m2!1ses!2scl!4v1710000000000"
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="PRO HOME® Office — Av. Balmaceda 2455, Antofagasta"
+      ></iframe>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -291,4 +337,94 @@ const t = useTranslations('es');
     color: var(--color-muted);
     font-weight: var(--font-weight-semibold);
   }
+
+  /* FAQ Section */
+  .faq {
+    padding: var(--section-padding-y) 0;
+    background: var(--color-surface);
+  }
+
+  .faq__list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-6) 0;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+    transition: color var(--transition-fast);
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__question::after {
+    content: '+';
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-light);
+    color: var(--color-muted);
+    transition: transform var(--transition-normal);
+    flex-shrink: 0;
+    margin-left: var(--space-4);
+  }
+
+  .faq__item[open] .faq__question::after {
+    content: '−';
+  }
+
+  .faq__question:hover {
+    color: var(--color-accent);
+  }
+
+  .faq__answer {
+    padding: 0 0 var(--space-6);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Map Section */
+  .map-section {
+    padding: 0;
+  }
+
+  .map-section__wrapper {
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    filter: grayscale(1);
+    transition: filter var(--transition-normal);
+    line-height: 0;
+  }
+
+  .map-section__wrapper:hover {
+    filter: grayscale(0);
+  }
+
+  .map-section__wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+    min-height: 500px;
+  }
+
+  :global([data-theme="dark"]) .map-section__wrapper {
+    filter: grayscale(1) invert(1);
+  }
+
+  :global([data-theme="dark"]) .map-section__wrapper:hover {
+    filter: grayscale(0) invert(1);
+  }
+
 </style>

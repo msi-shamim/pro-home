@@ -177,5 +177,27 @@
     "why_desc": "Meet the team behind PRO HOME® and our approach to premium property management.",
     "reservation_title": "Book Accommodation | PRO HOME®",
     "reservation_desc": "Book your furnished apartment in Antofagasta. Short-term and corporate stays with PRO HOME®."
+  },
+  "map": {
+    "title": "Find Us"
+  },
+  "newsletter": {
+    "title": "Newsletter",
+    "placeholder": "Your email address",
+    "cta": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "What services does PRO HOME® offer?",
+    "a1": "We offer comprehensive property administration, corporate housing logistics, professional cleaning, maintenance, design & decoration, and real estate investment services. All under a B2B model focused on maximizing your income.",
+    "q2": "How can you increase my rental income?",
+    "a2": "Thanks to our partnerships with mining, energy, and construction companies, we can increase your monthly property income by 5% to 15%, with guaranteed B2B contracts and a 10-step tenant screening program.",
+    "q3": "What areas do you operate in?",
+    "a3": "We operate in the Antofagasta Region, Chile — the country's mining and energy hub. Our office is located at Av. Balmaceda 2455, Office 1209, Antofagasta.",
+    "q4": "Do you offer corporate housing for businesses?",
+    "a4": "Yes. We specialize in corporate housing logistics for companies operating in Antofagasta. We manage bookings, check-in/check-out, transport, 24/7 support, and corporate billing.",
+    "q5": "How can I request a property assessment?",
+    "a5": "You can request a free assessment through our contact form, via WhatsApp at (+569) 3131 9706, or by emailing contacto@pro-home.cl. We'll respond within 24 hours."
   }
 }

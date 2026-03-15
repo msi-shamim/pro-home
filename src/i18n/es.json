@@ -177,5 +177,27 @@
     "why_desc": "Conoce al equipo detrás de PRO HOME® y nuestra filosofía de gestión inmobiliaria premium.",
     "reservation_title": "Reservar Alojamiento | PRO HOME®",
     "reservation_desc": "Reserva tu departamento amoblado en Antofagasta. Estadías cortas y corporativas con PRO HOME®."
+  },
+  "map": {
+    "title": "Encuéntranos"
+  },
+  "newsletter": {
+    "title": "Newsletter",
+    "placeholder": "Tu correo electrónico",
+    "cta": "Suscribirse",
+    "success": "¡Gracias por suscribirte!"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "q1": "¿Qué servicios ofrece PRO HOME®?",
+    "a1": "Ofrecemos administración integral de propiedades, logística de alojamiento corporativo, limpieza profesional, mantenimiento, diseño y decoración, y servicios de inversión inmobiliaria. Todo bajo un modelo B2B enfocado en maximizar tus ingresos.",
+    "q2": "¿Cómo pueden aumentar mis ingresos por arriendo?",
+    "a2": "Gracias a nuestras alianzas con empresas mineras, energéticas y de construcción, podemos aumentar el pago mensual de tu propiedad entre un 5% y un 15%, con contratos B2B garantizados y un programa de selección de inquilinos de 10 pasos.",
+    "q3": "¿En qué zona operan?",
+    "a3": "Operamos en la Región de Antofagasta, Chile — el hub minero y energético del país. Nuestra oficina se ubica en Av. Balmaceda 2455, Oficina 1209, Antofagasta.",
+    "q4": "¿Ofrecen alojamiento corporativo para empresas?",
+    "a4": "Sí. Somos especialistas en logística de alojamiento para empresas con operaciones en Antofagasta. Gestionamos reservas, check-in/check-out, transporte, soporte 24/7 y facturación empresarial.",
+    "q5": "¿Cómo puedo solicitar una evaluación de mi propiedad?",
+    "a5": "Puedes solicitar una evaluación gratuita a través de nuestro formulario de contacto, por WhatsApp al (+569) 3131 9706, o enviando un correo a contacto@pro-home.cl. Te responderemos dentro de 24 horas."
   }
 }
