@@ -148,9 +148,7 @@ Secures bulk rental contracts with large corporations (mining sector, Exponor ev
 
 ## 📞 Contact
 
-- **Phone:** (+569) 3131 9706
-- **Email:** contacto@pro-home.cl
-- **Office:** Av. Balmaceda 2455, Of. 1209, Antofagasta
+- **Website:** [www.pro-home.cl](https://www.pro-home.cl)
 - **Instagram:** [@_pro_home](https://www.instagram.com/_pro_home/)
 
 ---
