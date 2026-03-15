@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BenefitsSection from '../../components/BenefitsSection.tsx';
+import ClientLogos from '../../components/ClientLogos.astro';
+import LeadCaptureForm from '../../components/LeadCaptureForm.tsx';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('en');
+---
+
+<BaseLayout
+  title={t('seo_pages.propietarios_title')}
+  description={t('seo_pages.propietarios_desc')}
+>
+  <!-- Hero -->
+  <section class="funnel-hero" id="propietarios-hero">
+    <div class="container">
+      <p class="funnel-hero__label">PRO HOME®</p>
+      <h1 class="funnel-hero__headline">{t('funnel.propietarios_headline')}</h1>
+      <p class="funnel-hero__sub">{t('funnel.propietarios_sub')}</p>
+      <a href="#lead-form-propietarios" class="funnel-hero__cta">
+        {t('funnel.propietarios_cta')}
+      </a>
+    </div>
+  </section>
+
+  <BenefitsSection
+    client:visible
+    sectionTitle={t('benefits.title')}
+    benefits={[
+      { icon: 'rates', title: t('benefits.best_rates_title'), description: t('benefits.best_rates_desc') },
+      { icon: 'tenants', title: t('benefits.tenant_mgmt_title'), description: t('benefits.tenant_mgmt_desc') },
+      { icon: 'maintenance', title: t('benefits.maintenance_title'), description: t('benefits.maintenance_desc') },
+      { icon: 'support', title: t('benefits.support_title'), description: t('benefits.support_desc') },
+    ]}
+  />
+
+  <ClientLogos title={t('clients.title')} />
+
+  <section class="funnel-form-section" id="propietarios-form-section">
+    <div class="container" style="display: flex; justify-content: center;">
+      <LeadCaptureForm
+        client:visible
+        formTitle={t('funnel.propietarios_form_title')}
+        formType="propietarios"
+        ctaLabel={t('funnel.propietarios_cta')}
+        successMessage={t('funnel.propietarios_success')}
+        thankYouUrl="/en/gracias"
+        fields={{
+          name: t('form.name'),
+          whatsapp: t('form.whatsapp'),
+          email: t('form.email'),
+          details: t('form.property_details'),
+          detailsPlaceholder: t('form.property_placeholder'),
+        }}
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .funnel-hero {
+    padding: var(--section-padding-y-hero) 0 var(--section-padding-y);
+    text-align: center;
+  }
+
+  .funnel-hero__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-black);
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .funnel-hero__headline {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    color: var(--color-accent);
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  @media (max-width: 767px) {
+    .funnel-hero__headline {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  .funnel-hero__sub {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    max-width: 560px;
+    margin: 0 auto var(--space-8);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .funnel-hero__cta {
+    display: inline-block;
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .funnel-hero__cta:hover {
+    opacity: 0.85;
+  }
+
+  .funnel-form-section {
+    padding: var(--section-padding-y) 0;
+    background: var(--color-bg);
+  }
+</style>

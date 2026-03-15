@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('en');
+---
+
+<BaseLayout
+  title={t('seo_pages.gracias_title')}
+  description={t('seo_pages.gracias_desc')}
+>
+  <section class="thankyou" id="thank-you">
+    <div class="container">
+      <div class="thankyou__icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </div>
+
+      <h1 class="thankyou__title">{t('thankyou.title')}</h1>
+      <p class="thankyou__message">{t('thankyou.message')}</p>
+
+      <div class="thankyou__actions">
+        <a href="/en" class="thankyou__btn thankyou__btn--primary">
+          {t('thankyou.cta_home')}
+        </a>
+        <a href="/en/propiedades" class="thankyou__btn thankyou__btn--secondary">
+          {t('thankyou.cta_properties')}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thankyou {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-24) 0;
+    text-align: center;
+  }
+
+  .thankyou__icon {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-8);
+    color: var(--color-accent);
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .thankyou__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .thankyou__message {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    max-width: 480px;
+    margin: 0 auto var(--space-8);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .thankyou__actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .thankyou__btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .thankyou__btn:hover {
+    opacity: 0.85;
+  }
+
+  .thankyou__btn--primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .thankyou__btn--secondary {
+    background: none;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>

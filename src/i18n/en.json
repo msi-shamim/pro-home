@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "properties": "LIVE THE EXPERIENCE!",
+    "contact": "Contact",
+    "reserve": "Book Now",
+    "menu": "Menu",
+    "whyProHome": "Why PRO HOME?"
+  },
+  "services_dropdown": {
+    "property_management": "Real Estate Management",
+    "property_admin": "Property Administration",
+    "short_term": "Short-Term Administration",
+    "investment": "Investment Services",
+    "pro_home_care": "Pro-Home Care",
+    "cleaning": "Property Cleaning",
+    "maintenance": "Property Maintenance",
+    "design": "Design & Decoration",
+    "corporate_lodging": "Corporate Housing Logistics"
+  },
+  "hero": {
+    "tagline": "Experts in B2B Contracts & Investment",
+    "cta": "Contact Us",
+    "subtitle": "Premium property management in Antofagasta"
+  },
+  "benefits": {
+    "title": "Benefits of Working with PRO HOME®",
+    "best_rates_title": "Best rental rates in the market guaranteed",
+    "best_rates_desc": "In most cases, we can increase the monthly payment you receive for your property by 5% to 15%. We achieve this thanks to our partnerships and our expertise in finding the best tenants, allowing us to improve your income safely and effectively.",
+    "tenant_mgmt_title": "Full-spectrum tenant management",
+    "tenant_mgmt_desc": "In addition to our 10-step new tenant screening program, the secret to our success is being proactive and maintaining constant communication with our tenants.",
+    "maintenance_title": "Lower maintenance and repair costs",
+    "maintenance_desc": "We have built our own team to handle maintenance and repairs on the properties we manage. Additionally, we have carefully selected suppliers, achieving preferential pricing.",
+    "support_title": "Comprehensive administrative support",
+    "support_desc": "Pro Home is an expert in corporate housing logistics, ensuring efficient and personalized management to meet the needs of companies requiring quality spaces for their employees or temporary projects."
+  },
+  "clients": {
+    "title": "Our Clients"
+  },
+  "contact": {
+    "title": "Contact",
+    "phone": "(+569) 3131 9706",
+    "email": "contacto@pro-home.cl",
+    "footer_email": "hola@pro-home.cl",
+    "address": "Av. Balmaceda 2455, Office 1209, Antofagasta, Chile",
+    "hours": "Monday to Friday 09:00 – 18:00 hrs / Saturdays 09:00 – 13:00 hrs",
+    "download_profile": "Download company profile"
+  },
+  "footer": {
+    "objective_title": "Our Mission",
+    "objective_text": "Our goal is to provide you with the peace of mind you need to maximize your income. We have a wide range of tools and deep knowledge in various areas, which we strategically combine to create mutual success.",
+    "office": "Office",
+    "rights": "© 2026 PRO HOME®. All rights reserved."
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
+  "lang": {
+    "switch": "Español",
+    "current": "EN"
+  },
+  "seo": {
+    "home_title": "PRO HOME® | Premium Property Management in Antofagasta",
+    "home_description": "Experts in B2B contracts and real estate investment in Antofagasta, Chile. Property administration, corporate housing and premium real estate services.",
+    "services_title": "Services | PRO HOME®",
+    "services_description": "Comprehensive property management, corporate housing, cleaning, maintenance and property design services in Antofagasta.",
+    "properties_title": "Properties | PRO HOME®",
+    "properties_description": "Explore rental and sale properties in Antofagasta. Apartments, houses and corporate solutions by PRO HOME®.",
+    "contact_title": "Contact | PRO HOME®",
+    "contact_description": "Contact us for property management, corporate housing and real estate services in Antofagasta, Chile."
+  },
+  "whatsapp": {
+    "aria_label": "Contact via WhatsApp"
+  },
+  "drawer": {
+    "close": "Close menu"
+  },
+  "funnel": {
+    "propietarios_headline": "Tired of dealing with tenant problems?",
+    "propietarios_sub": "Maximize your income with guaranteed B2B contracts. We increase your monthly rent by 5% to 15%.",
+    "propietarios_cta": "Request Free Assessment",
+    "propietarios_form_title": "Free Property Assessment",
+    "propietarios_success": "Thank you! We'll contact you via WhatsApp within 24 hours.",
+    "empresas_headline": "Corporate Housing in Antofagasta",
+    "empresas_sub": "Comprehensive housing solutions for mining, energy, and construction companies in the Antofagasta Region.",
+    "empresas_cta": "Request Corporate Proposal",
+    "empresas_form_title": "Request Corporate Proposal",
+    "empresas_success": "Proposal requested! Our B2B team will contact you shortly.",
+    "empresas_capabilities": "Booking management, check-in/check-out, transport, 24/7 support, corporate billing"
+  },
+  "form": {
+    "name": "Full name",
+    "whatsapp": "WhatsApp",
+    "email": "Email address",
+    "property_details": "Property details",
+    "property_placeholder": "Location, property type, number of rooms...",
+    "company_details": "Requirements details",
+    "company_placeholder": "Number of people, duration, required services..."
+  },
+  "thankyou": {
+    "title": "Thank you for contacting us!",
+    "message": "Your request has been received. Our team will contact you via WhatsApp within 24 hours.",
+    "cta_home": "Back to home",
+    "cta_properties": "Explore properties"
+  },
+  "homepage": {
+    "cta_propietarios": "I'm a Property Owner",
+    "cta_empresas": "I'm a Business",
+    "services_title": "Our Services",
+    "reviews_title": "What Our Clients Say"
+  },
+  "services_detail": {
+    "admin_title": "Property Administration",
+    "admin_desc": "Comprehensive property management under the B2B model. We handle everything: tenant screening, contracts, maintenance, and billing.",
+    "short_term_title": "Short-Term Administration",
+    "short_term_desc": "Complete management of your property on short-term rental platforms. 6 steps: evaluation, photography, listing, reservation management, cleaning, and reports.",
+    "investment_title": "Investment Services",
+    "investment_desc": "We advise you on purchasing high-return properties. Market analysis, property search, and complete document management.",
+    "cleaning_title": "Property Cleaning",
+    "cleaning_desc": "Professional cleaning services for check-in/check-out and regular property maintenance.",
+    "maintenance_title": "Property Maintenance",
+    "maintenance_desc": "In-house maintenance and repair team. Preferential pricing with selected suppliers.",
+    "design_title": "Design & Decoration",
+    "design_desc": "Furnishing and decoration of apartments to maximize appeal and rental value.",
+    "corporate_title": "Corporate Housing Logistics",
+    "corporate_desc": "Housing solutions for companies operating in the Antofagasta Region. Comprehensive accommodation management for work teams.",
+    "cta_contact": "Inquire about service",
+    "back_to_services": "← Back to services"
+  },
+  "team": {
+    "title": "Our Team",
+    "alessandra_role": "Founder & CEO",
+    "alessandra_bg": "Commercial Engineer, with extensive experience in property administration and B2B business development.",
+    "diego_role": "Director of Operations",
+    "diego_bg": "Mining Engineer, expert in corporate logistics and project management.",
+    "luis_role": "Director of Investment",
+    "luis_bg": "Commercial Engineer, specialist in market analysis and real estate investment strategies.",
+    "angely_role": "General Coordinator",
+    "angely_bg": "Business Administrator, administrative management and customer service."
+  },
+  "why": {
+    "title": "Why PRO HOME?",
+    "philosophy": "Our goal is to provide you with the peace of mind you need to maximize your income. We have a wide range of tools and deep knowledge in various areas."
+  },
+  "properties": {
+    "title": "Available Properties",
+    "filter_all": "All",
+    "filter_rent": "For Rent",
+    "filter_sale": "For Sale",
+    "no_results": "No properties found.",
+    "badge_rent": "FOR RENT",
+    "badge_sale": "FOR SALE"
+  },
+  "contact_page": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help with any questions about our real estate services.",
+    "form_title": "Send us a message",
+    "form_cta": "Send message",
+    "form_success": "Message sent! We'll reply soon.",
+    "message_label": "Message",
+    "message_placeholder": "Tell us how we can help you..."
+  },
+  "reservation": {
+    "title": "Book Accommodation",
+    "subtitle": "Furnished apartments in Antofagasta for short-term and corporate stays."
+  },
+  "seo_pages": {
+    "propietarios_title": "Property Owners — Free Assessment | PRO HOME®",
+    "propietarios_desc": "Own a property in Antofagasta? Maximize your income with B2B contracts. Request your free assessment.",
+    "empresas_title": "Corporate Housing | PRO HOME®",
+    "empresas_desc": "Corporate housing in Antofagasta for mining, energy, and construction companies. Request your proposal.",
+    "gracias_title": "Thank You! | PRO HOME®",
+    "gracias_desc": "Your request has been received. PRO HOME® will contact you soon.",
+    "why_title": "Why PRO HOME? | PRO HOME®",
+    "why_desc": "Meet the team behind PRO HOME® and our approach to premium property management.",
+    "reservation_title": "Book Accommodation | PRO HOME®",
+    "reservation_desc": "Book your furnished apartment in Antofagasta. Short-term and corporate stays with PRO HOME®."
+  }
+}

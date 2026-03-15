@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import { useTranslations } from '../../../i18n/index';
+
+const t = useTranslations('en');
+---
+
+<BaseLayout title={t('seo.services_title')} description={t('seo.services_description')}>
+  <section class="services-landing" id="services">
+    <div class="container">
+      <h1 class="page-title">{t('nav.services')}</h1>
+      <p class="page-subtitle">{t('seo.services_description')}</p>
+
+      <div class="services-grid">
+        <ServiceCard icon="property" title={t('services_detail.admin_title')} description={t('services_detail.admin_desc')} href="/en/servicios/administracion-propiedades" ctaLabel={t('services_detail.cta_contact')} />
+        <ServiceCard icon="cleaning" title={t('services_detail.short_term_title')} description={t('services_detail.short_term_desc')} href="/en/servicios/administracion-corto-plazo" ctaLabel={t('services_detail.cta_contact')} />
+        <ServiceCard icon="repair" title={t('services_detail.investment_title')} description={t('services_detail.investment_desc')} href="/en/servicios/servicio-de-inversion" ctaLabel={t('services_detail.cta_contact')} />
+        <ServiceCard icon="cleaning" title={t('services_detail.cleaning_title')} description={t('services_detail.cleaning_desc')} href="/en/servicios/limpieza" ctaLabel={t('services_detail.cta_contact')} />
+        <ServiceCard icon="repair" title={t('services_detail.maintenance_title')} description={t('services_detail.maintenance_desc')} href="/en/servicios/mantenimiento" ctaLabel={t('services_detail.cta_contact')} />
+        <ServiceCard icon="property" title={t('services_detail.design_title')} description={t('services_detail.design_desc')} href="/en/servicios/diseno-decoracion" ctaLabel={t('services_detail.cta_contact')} />
+        <ServiceCard icon="corporate" title={t('services_detail.corporate_title')} description={t('services_detail.corporate_desc')} href="/en/servicios/logistica-corporativa" ctaLabel={t('services_detail.cta_contact')} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .services-landing { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
+  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-4); letter-spacing: var(--letter-spacing-tight); }
+  .page-subtitle { font-size: var(--font-size-md); color: var(--color-text-secondary); text-align: center; max-width: 600px; margin: 0 auto var(--section-gap); line-height: var(--line-height-relaxed); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); }
+</style>

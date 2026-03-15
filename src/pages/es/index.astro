@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BenefitsSection from '../../components/BenefitsSection.tsx';
+import ClientLogos from '../../components/ClientLogos.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('es');
+---
+
+<BaseLayout
+  title={t('seo.home_title')}
+  description={t('seo.home_description')}
+>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <p class="hero__label" data-reveal>{t('hero.tagline') && 'PRO HOME®'}</p>
+      <h1 class="hero__headline" data-reveal data-reveal-delay="1">{t('hero.tagline')}</h1>
+      <p class="hero__sub" data-reveal data-reveal-delay="2">{t('hero.subtitle')}</p>
+
+      <!-- Dual CTAs aligned to funnels -->
+      <div class="hero__ctas" data-reveal data-reveal-delay="3">
+        <a href="/es/propietarios" class="hero__cta hero__cta--primary" id="cta-propietarios">
+          {t('homepage.cta_propietarios')}
+        </a>
+        <a href="/es/empresas" class="hero__cta hero__cta--secondary" id="cta-empresas">
+          {t('homepage.cta_empresas')}
+        </a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="hero__contact" data-reveal data-reveal-delay="4">
+        <span>{t('contact.phone')}</span>
+        <span>·</span>
+        <span>{t('contact.email')}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <BenefitsSection
+    client:visible
+    sectionTitle={t('benefits.title')}
+    benefits={[
+      { icon: 'rates', title: t('benefits.best_rates_title'), description: t('benefits.best_rates_desc') },
+      { icon: 'tenants', title: t('benefits.tenant_mgmt_title'), description: t('benefits.tenant_mgmt_desc') },
+      { icon: 'maintenance', title: t('benefits.maintenance_title'), description: t('benefits.maintenance_desc') },
+      { icon: 'support', title: t('benefits.support_title'), description: t('benefits.support_desc') },
+    ]}
+  />
+
+  <!-- Services Overview -->
+  <section class="services-overview" id="services-overview">
+    <div class="container">
+      <h2 class="section-title" data-reveal>{t('homepage.services_title')}</h2>
+      <div class="services-overview__grid">
+        <div data-reveal data-reveal-delay="1">
+          <ServiceCard
+            icon="property"
+            title={t('services_detail.admin_title')}
+            description={t('services_detail.admin_desc')}
+            href="/es/servicios/administracion-propiedades"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+        <div data-reveal data-reveal-delay="2">
+          <ServiceCard
+            icon="corporate"
+            title={t('services_detail.corporate_title')}
+            description={t('services_detail.corporate_desc')}
+            href="/es/servicios/logistica-corporativa"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+        <div data-reveal data-reveal-delay="3">
+          <ServiceCard
+            icon="cleaning"
+            title={t('services_detail.short_term_title')}
+            description={t('services_detail.short_term_desc')}
+            href="/es/servicios/administracion-corto-plazo"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+        <div data-reveal data-reveal-delay="4">
+          <ServiceCard
+            icon="repair"
+            title={t('services_detail.investment_title')}
+            description={t('services_detail.investment_desc')}
+            href="/es/servicios/servicio-de-inversion"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <ClientLogos title={t('clients.title')} />
+
+  <!-- Google Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title" data-reveal>{t('homepage.reviews_title')}</h2>
+      <div class="reviews__grid">
+        <div class="reviews__card" data-reveal data-reveal-delay="1">
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Excelente gestión inmobiliaria. Muy profesionales y siempre disponibles para resolver cualquier consulta."</p>
+          <p class="reviews__author">— Rosy Gallardo, Google</p>
+        </div>
+        <div class="reviews__card" data-reveal data-reveal-delay="2">
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Profesionales serios y comprometidos. Nos solucionaron el alojamiento para nuestro equipo de ingenieros en tiempo récord."</p>
+          <p class="reviews__author">— Daniel Valderrama, Google</p>
+        </div>
+        <div class="reviews__card" data-reveal data-reveal-delay="3">
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Muy recomendables. Mi departamento siempre está en perfectas condiciones y los pagos llegan a tiempo."</p>
+          <p class="reviews__author">— Arturo Vicent, Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--section-padding-y-hero) 0 var(--section-padding-y);
+    text-align: center;
+    position: relative;
+    background: url('/images/hero-bg.png') center/cover no-repeat;
+    overflow: hidden;
+  }
+
+  /* Dark overlay for text readability */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-black);
+    letter-spacing: var(--letter-spacing-wider);
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__headline {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    color: #FFFFFF;
+    max-width: 700px;
+    margin: 0 auto var(--space-4);
+    letter-spacing: var(--letter-spacing-tight);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    .hero__headline {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  .hero__sub {
+    font-size: var(--font-size-md);
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--section-gap);
+  }
+
+  .hero__cta {
+    display: inline-block;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .hero__cta:hover {
+    opacity: 0.85;
+  }
+
+  .hero__cta--primary {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  .hero__cta--secondary {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #FFFFFF;
+  }
+
+  .hero__contact {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--section-gap);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .services-overview {
+    padding: var(--section-padding-y) 0;
+  }
+
+  .services-overview__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .services-overview__grid > div {
+    display: flex;
+  }
+
+  .services-overview__grid > div > :global(.service-card) {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .services-overview__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .reviews {
+    padding: var(--section-padding-y) 0;
+    background: var(--color-surface);
+  }
+
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .reviews__card {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  .reviews__stars {
+    color: #F5A623;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-3);
+    letter-spacing: 2px;
+  }
+
+  .reviews__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: var(--line-height-relaxed);
+    font-style: italic;
+    margin-bottom: var(--space-3);
+  }
+
+  .reviews__author {
+    font-size: var(--font-size-xs);
+    color: var(--color-muted);
+    font-weight: var(--font-weight-semibold);
+  }
+</style>

@@ -1,0 +1,133 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import SEOHead from '../components/SEOHead.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import MobileShell from '../components/MobileShell.tsx';
+import WhatsAppFAB from '../components/WhatsAppFAB.tsx';
+import { getLangFromUrl, useTranslations } from '../i18n/index';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={lang === 'es' ? 'es-CL' : 'en-US'} data-theme="light">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      lang={lang}
+      currentPath={currentPath}
+    />
+    <ClientRouter />
+  </head>
+  <body>
+    <!-- Desktop Navbar -->
+    <Navbar
+      lang={lang}
+      currentPath={currentPath}
+      translations={{
+        home: t('nav.home'),
+        services: t('nav.services'),
+        properties: t('nav.properties'),
+        contact: t('nav.contact'),
+        reserve: t('nav.reserve'),
+        whyProHome: t('nav.whyProHome'),
+      }}
+      servicesDropdown={{
+        property_management: t('services_dropdown.property_management'),
+        property_admin: t('services_dropdown.property_admin'),
+        short_term: t('services_dropdown.short_term'),
+        investment: t('services_dropdown.investment'),
+        pro_home_care: t('services_dropdown.pro_home_care'),
+        cleaning: t('services_dropdown.cleaning'),
+        maintenance: t('services_dropdown.maintenance'),
+        design: t('services_dropdown.design'),
+        corporate_lodging: t('services_dropdown.corporate_lodging'),
+      }}
+    />
+
+    <!-- Main Content -->
+    <main transition:animate="fade">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <Footer lang={lang} />
+
+    <!-- Mobile Navigation Shell -->
+    <MobileShell
+      client:load
+      lang={lang}
+      currentPath={currentPath}
+      translations={{
+        home: t('nav.home'),
+        services: t('nav.services'),
+        properties: t('nav.properties'),
+        contact: t('nav.contact'),
+        menu: t('nav.menu'),
+        reserve: t('nav.reserve'),
+        whyProHome: t('nav.whyProHome'),
+        closeDrawer: t('drawer.close'),
+      }}
+    />
+
+    <!-- WhatsApp FAB -->
+    <WhatsAppFAB
+      client:load
+      ariaLabel={t('whatsapp.aria_label')}
+    />
+
+    <!-- Theme initialization script (runs before paint to avoid flash) -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('prohome-theme');
+        if (theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
+    <!-- Scroll-reveal Intersection Observer -->
+    <script is:inline>
+      (function initReveal() {
+        var els = document.querySelectorAll('[data-reveal]');
+        if (!els.length) return;
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('revealed');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        els.forEach(function(el) { io.observe(el); });
+      })();
+      // Re-run after Astro page transitions
+      document.addEventListener('astro:page-load', function() {
+        var els = document.querySelectorAll('[data-reveal]:not(.revealed)');
+        if (!els.length) return;
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('revealed');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        els.forEach(function(el) { io.observe(el); });
+      });
+    </script>
+  </body>
+</html>

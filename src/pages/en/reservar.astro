@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('en');
+---
+
+<BaseLayout title={t('seo_pages.reservation_title')} description={t('seo_pages.reservation_desc')}>
+  <section class="reservation-page" id="reservation">
+    <div class="container">
+      <h1 class="page-title">{t('reservation.title')}</h1>
+      <p class="page-subtitle">{t('reservation.subtitle')}</p>
+
+      <div class="reservation-grid">
+        <div class="reservation-card">
+          <div class="reservation-card__image">
+            <span class="reservation-card__badge">AVAILABLE</span>
+            <div class="reservation-card__logo">PRO HOME®</div>
+          </div>
+          <div class="reservation-card__info">
+            <h3>Vista Horizonte Apt</h3>
+            <p class="reservation-card__specs">2 bed · 1 bath · 65 m² · Av. Balmaceda</p>
+            <p class="reservation-card__price">$55,000 CLP / night</p>
+            <a href="https://wa.me/56931319706?text=Hello%2C%20I%20want%20to%20book%20Vista%20Horizonte%20Apt" class="reservation-card__cta" target="_blank" rel="noopener noreferrer">
+              {t('nav.reserve')} →
+            </a>
+          </div>
+        </div>
+
+        <div class="reservation-card">
+          <div class="reservation-card__image">
+            <span class="reservation-card__badge">AVAILABLE</span>
+            <div class="reservation-card__logo">PRO HOME®</div>
+          </div>
+          <div class="reservation-card__info">
+            <h3>Rímini Apt</h3>
+            <p class="reservation-card__specs">1 bed · 1 bath · 45 m² · Calle Prat</p>
+            <p class="reservation-card__price">$45,000 CLP / night</p>
+            <a href="https://wa.me/56931319706?text=Hello%2C%20I%20want%20to%20book%20Rimini%20Apt" class="reservation-card__cta" target="_blank" rel="noopener noreferrer">
+              {t('nav.reserve')} →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .reservation-page { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
+  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-4); letter-spacing: var(--letter-spacing-tight); }
+  .page-subtitle { font-size: var(--font-size-md); color: var(--color-text-secondary); text-align: center; max-width: 600px; margin: 0 auto var(--section-gap); line-height: var(--line-height-relaxed); }
+  .reservation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-8); }
+  .reservation-card { border: 1px solid var(--color-border); background: var(--color-surface); overflow: hidden; transition: border-color var(--transition-fast); }
+  .reservation-card:hover { border-color: var(--color-accent); }
+  .reservation-card__image { position: relative; height: 200px; background: var(--color-muted-bg); display: flex; align-items: center; justify-content: center; }
+  .reservation-card__badge { position: absolute; top: var(--space-3); left: var(--space-3); padding: var(--space-1) var(--space-3); background: #25D366; color: #fff; font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); }
+  .reservation-card__logo { font-size: var(--font-size-sm); font-weight: var(--font-weight-black); color: var(--color-muted); opacity: 0.4; }
+  .reservation-card__info { padding: var(--space-6); }
+  .reservation-card__info h3 { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-accent); margin-bottom: var(--space-2); }
+  .reservation-card__specs { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-3); }
+  .reservation-card__price { font-size: var(--font-size-xl); font-weight: var(--font-weight-black); color: var(--color-accent); margin-bottom: var(--space-4); }
+  .reservation-card__cta { display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-accent); color: var(--color-bg); font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); text-decoration: none; transition: opacity var(--transition-fast); }
+  .reservation-card__cta:hover { opacity: 0.85; }
+</style>

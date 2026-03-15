@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TeamCard from '../../components/TeamCard.astro';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('es');
+---
+
+<BaseLayout title={t('seo_pages.why_title')} description={t('seo_pages.why_desc')}>
+  <section class="why-page" id="why-prohome">
+    <div class="container">
+      <h1 class="page-title">{t('why.title')}</h1>
+      <p class="page-subtitle">{t('why.philosophy')}</p>
+
+      <h2 class="section-title">{t('team.title')}</h2>
+      <div class="team-grid">
+        <TeamCard name="Alessandra Larraguibel" role={t('team.alessandra_role')} background={t('team.alessandra_bg')} />
+        <TeamCard name="Diego Villarroel" role={t('team.diego_role')} background={t('team.diego_bg')} />
+        <TeamCard name="Luis Rojas" role={t('team.luis_role')} background={t('team.luis_bg')} />
+        <TeamCard name="Angely Cortez" role={t('team.angely_role')} background={t('team.angely_bg')} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .why-page { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
+  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-4); letter-spacing: var(--letter-spacing-tight); }
+  .page-subtitle { font-size: var(--font-size-md); color: var(--color-text-secondary); text-align: center; max-width: 600px; margin: 0 auto var(--space-16); line-height: var(--line-height-relaxed); }
+  .section-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--section-gap); letter-spacing: var(--letter-spacing-tight); }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); }
+</style>

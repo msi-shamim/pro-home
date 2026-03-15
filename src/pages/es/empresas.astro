@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ClientLogos from '../../components/ClientLogos.astro';
+import LeadCaptureForm from '../../components/LeadCaptureForm.tsx';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('es');
+
+const capabilities = t('funnel.empresas_capabilities').split(', ');
+---
+
+<BaseLayout
+  title={t('seo_pages.empresas_title')}
+  description={t('seo_pages.empresas_desc')}
+>
+  <!-- Hero -->
+  <section class="funnel-hero" id="empresas-hero">
+    <div class="container">
+      <p class="funnel-hero__label">PRO HOME® — B2B</p>
+      <h1 class="funnel-hero__headline">{t('funnel.empresas_headline')}</h1>
+      <p class="funnel-hero__sub">{t('funnel.empresas_sub')}</p>
+      <a href="#lead-form-empresas" class="funnel-hero__cta">
+        {t('funnel.empresas_cta')}
+      </a>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="capabilities" id="empresas-capabilities">
+    <div class="container">
+      <div class="capabilities__grid">
+        {capabilities.map((cap) => (
+          <div class="capabilities__card">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>{cap}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <ClientLogos title={t('clients.title')} />
+
+  <!-- Lead Form -->
+  <section class="funnel-form-section" id="empresas-form-section">
+    <div class="container" style="display: flex; justify-content: center;">
+      <LeadCaptureForm
+        client:visible
+        formTitle={t('funnel.empresas_form_title')}
+        formType="empresas"
+        ctaLabel={t('funnel.empresas_cta')}
+        successMessage={t('funnel.empresas_success')}
+        thankYouUrl="/es/gracias"
+        fields={{
+          name: t('form.name'),
+          whatsapp: t('form.whatsapp'),
+          email: t('form.email'),
+          details: t('form.company_details'),
+          detailsPlaceholder: t('form.company_placeholder'),
+        }}
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .funnel-hero {
+    padding: var(--section-padding-y-hero) 0 var(--section-padding-y);
+    text-align: center;
+  }
+
+  .funnel-hero__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-black);
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .funnel-hero__headline {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    color: var(--color-accent);
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  @media (max-width: 767px) {
+    .funnel-hero__headline {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  .funnel-hero__sub {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    max-width: 560px;
+    margin: 0 auto var(--space-8);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .funnel-hero__cta {
+    display: inline-block;
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .funnel-hero__cta:hover {
+    opacity: 0.85;
+  }
+
+  .capabilities {
+    padding: var(--space-12) 0;
+  }
+
+  .capabilities__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  .capabilities__card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+  }
+
+  .capabilities__card svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .funnel-form-section {
+    padding: var(--section-padding-y) 0;
+    background: var(--color-bg);
+  }
+</style>

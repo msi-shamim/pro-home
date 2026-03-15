@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const clients = [
+  'CJR Renewables', 'INTEALSA', 'CheckIn Hotel', 'SICOMAQ',
+  'bioclean', 'DALI', 'SKF', 'San Francisco Ingeniería',
+  'CleanTech Lithium', 'Inv. VYL SpA', 'AlbaNetwork', 'GMT',
+  'aramark', 'thyssenkrupp', 'CONPRETEDECOR',
+];
+---
+
+<section class="clients" id="client-logos" data-reveal>
+  <div class="container">
+    <h2 class="clients__title">{title}</h2>
+    <div class="clients__track">
+      <div class="clients__marquee">
+        {[...clients, ...clients].map((name, i) => (
+          <div class="clients__item">
+            <span>{name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .clients {
+    padding: var(--section-padding-y) 0;
+    overflow: hidden;
+  }
+
+  .clients__title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-muted);
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .clients__track {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .clients__marquee {
+    display: flex;
+    gap: var(--space-8);
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  .clients__item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    border: 1px solid var(--color-border);
+    white-space: nowrap;
+  }
+
+  .clients__item span {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .clients__track:hover .clients__marquee {
+    animation-play-state: paused;
+  }
+</style>

@@ -1,0 +1,235 @@
+---
+import ThemeToggle from './ThemeToggle';
+import LanguageSwitcher from './LanguageSwitcher';
+
+interface Props {
+  lang: 'es' | 'en';
+  currentPath: string;
+  translations: {
+    home: string;
+    services: string;
+    properties: string;
+    contact: string;
+    reserve: string;
+    whyProHome: string;
+  };
+  servicesDropdown: {
+    property_management: string;
+    property_admin: string;
+    short_term: string;
+    investment: string;
+    pro_home_care: string;
+    cleaning: string;
+    maintenance: string;
+    design: string;
+    corporate_lodging: string;
+  };
+}
+
+const { lang, currentPath, translations, servicesDropdown } = Astro.props;
+---
+
+<header class="desktop-only navbar" id="desktop-navbar">
+  <div class="navbar__inner container">
+    <!-- Logo -->
+    <a href={`/${lang}`} class="navbar__logo" aria-label="PRO HOME® - Home">
+      <span class="navbar__logo-text">PRO HOME<sup>®</sup></span>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="navbar__nav" aria-label="Main navigation">
+      <a href={`/${lang}`} class:list={['navbar__link', { 'navbar__link--active': currentPath === `/${lang}` || currentPath === `/${lang}/` }]}>
+        {translations.home}
+      </a>
+
+      <!-- Services Dropdown -->
+      <div class="navbar__dropdown" id="services-dropdown">
+        <a href={`/${lang}/servicios`} class:list={['navbar__link', { 'navbar__link--active': currentPath.includes('/servicios') }]}>
+          {translations.services}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </a>
+        <div class="navbar__dropdown-menu">
+          <span class="navbar__dropdown-category">{servicesDropdown.property_management}</span>
+          <a href={`/${lang}/servicios/administracion-propiedades`} class="navbar__dropdown-link">{servicesDropdown.property_admin}</a>
+          <a href={`/${lang}/servicios/administracion-corto-plazo`} class="navbar__dropdown-link">{servicesDropdown.short_term}</a>
+          <a href={`/${lang}/servicios/servicio-de-inversion`} class="navbar__dropdown-link">{servicesDropdown.investment}</a>
+          <div class="navbar__dropdown-divider"></div>
+          <span class="navbar__dropdown-category">{servicesDropdown.pro_home_care}</span>
+          <a href={`/${lang}/servicios/limpieza`} class="navbar__dropdown-link">{servicesDropdown.cleaning}</a>
+          <a href={`/${lang}/servicios/mantenimiento`} class="navbar__dropdown-link">{servicesDropdown.maintenance}</a>
+          <a href={`/${lang}/servicios/diseno-decoracion`} class="navbar__dropdown-link">{servicesDropdown.design}</a>
+          <div class="navbar__dropdown-divider"></div>
+          <a href={`/${lang}/servicios/logistica-corporativa`} class="navbar__dropdown-link">{servicesDropdown.corporate_lodging}</a>
+        </div>
+      </div>
+
+      <a href={`/${lang}/propiedades`} class:list={['navbar__link', { 'navbar__link--active': currentPath.includes('/propiedades') }]}>
+        {translations.properties}
+      </a>
+      <a href={`/${lang}/por-que-pro-home`} class:list={['navbar__link', { 'navbar__link--active': currentPath.includes('/por-que-pro-home') }]}>
+        {translations.whyProHome}
+      </a>
+      <a href={`/${lang}/contacto`} class:list={['navbar__link', { 'navbar__link--active': currentPath.includes('/contacto') }]}>
+        {translations.contact}
+      </a>
+    </nav>
+
+    <!-- Right Controls -->
+    <div class="navbar__controls">
+      <a href={`/${lang}/reservar`} class="navbar__cta">
+        {translations.reserve}
+      </a>
+      <ThemeToggle client:load />
+      <LanguageSwitcher client:load currentLang={lang} currentPath={currentPath} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    z-index: var(--z-sticky);
+    transition: background-color var(--transition-normal);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: var(--space-6);
+  }
+
+  /* Logo */
+  .navbar__logo {
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .navbar__logo-text {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-black);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-accent);
+  }
+
+  .navbar__logo-text sup {
+    font-size: 0.5em;
+    vertical-align: super;
+  }
+
+  /* Nav Links */
+  .navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .navbar__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    transition: color var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .navbar__link:hover {
+    color: var(--color-accent);
+  }
+
+  .navbar__link--active {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Dropdown */
+  .navbar__dropdown {
+    position: relative;
+  }
+
+  .navbar__dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 260px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: var(--space-3) 0;
+    z-index: var(--z-dropdown);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .navbar__dropdown:hover .navbar__dropdown-menu {
+    display: block;
+  }
+
+  .navbar__dropdown-category {
+    display: block;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-muted);
+  }
+
+  .navbar__dropdown-link {
+    display: block;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+  }
+
+  .navbar__dropdown-link:hover {
+    background: var(--color-muted-bg);
+    color: var(--color-accent);
+  }
+
+  .navbar__dropdown-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: var(--space-2) 0;
+  }
+
+  /* Controls */
+  .navbar__controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .navbar__cta {
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+    border: none;
+  }
+
+  .navbar__cta:hover {
+    opacity: 0.85;
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeadCaptureForm from '../../components/LeadCaptureForm.tsx';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('es');
+---
+
+<BaseLayout title={t('seo.contact_title')} description={t('seo.contact_description')}>
+  <section class="contact-page" id="contact">
+    <div class="container">
+      <h1 class="page-title">{t('contact_page.title')}</h1>
+      <p class="page-subtitle">{t('contact_page.subtitle')}</p>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <LeadCaptureForm
+          client:visible
+          formTitle={t('contact_page.form_title')}
+          formType="contacto"
+          ctaLabel={t('contact_page.form_cta')}
+          successMessage={t('contact_page.form_success')}
+          thankYouUrl="/es/gracias"
+          fields={{
+            name: t('form.name'),
+            whatsapp: t('form.whatsapp'),
+            email: t('form.email'),
+            details: t('contact_page.message_label'),
+            detailsPlaceholder: t('contact_page.message_placeholder'),
+          }}
+        />
+
+        <!-- Info -->
+        <div class="contact-info">
+          <div class="contact-info__block">
+            <h3 class="contact-info__label">{t('footer.office')}</h3>
+            <p>{t('contact.address')}</p>
+          </div>
+          <div class="contact-info__block">
+            <h3 class="contact-info__label">{t('contact.title')}</h3>
+            <p>{t('contact.phone')}</p>
+            <p>{t('contact.email')}</p>
+          </div>
+          <div class="contact-info__block">
+            <p class="contact-info__hours">{t('contact.hours')}</p>
+          </div>
+          <a href="https://wa.me/56931319706" class="contact-whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-page { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
+  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-4); letter-spacing: var(--letter-spacing-tight); }
+  .page-subtitle { font-size: var(--font-size-md); color: var(--color-text-secondary); text-align: center; max-width: 600px; margin: 0 auto var(--section-gap); line-height: var(--line-height-relaxed); }
+  .contact-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-10); }
+  @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+  .contact-info { display: flex; flex-direction: column; gap: var(--space-6); }
+  .contact-info__block { padding: var(--space-5); border: 1px solid var(--color-border); background: var(--color-surface); }
+  .contact-info__block p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
+  .contact-info__label { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); color: var(--color-accent); margin-bottom: var(--space-2); }
+  .contact-info__hours { font-size: var(--font-size-xs); color: var(--color-muted); }
+  .contact-whatsapp { display: inline-block; padding: var(--space-4) var(--space-6); background: #25D366; color: #fff; font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); text-decoration: none; text-align: center; transition: opacity var(--transition-fast); }
+  .contact-whatsapp:hover { opacity: 0.85; }
+</style>

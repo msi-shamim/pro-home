@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PropertyCard from '../../components/PropertyCard.astro';
+import { useTranslations } from '../../i18n/index';
+
+const t = useTranslations('es');
+---
+
+<BaseLayout title={t('seo.properties_title')} description={t('seo.properties_description')}>
+  <section class="properties-page" id="properties">
+    <div class="container">
+      <h1 class="page-title">{t('properties.title')}</h1>
+
+      <!-- Filters -->
+      <div class="properties-filters">
+        <button class="filter-btn filter-btn--active">{t('properties.filter_all')}</button>
+        <button class="filter-btn">{t('properties.filter_rent')}</button>
+        <button class="filter-btn">{t('properties.filter_sale')}</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="properties-grid">
+        <PropertyCard title="Depto Vista Horizonte" price="$650.000 CLP/mes" address="Av. Balmaceda, Antofagasta" type="arriendo" typeLabel={t('properties.badge_rent')} beds="2" baths="1" area="65 m²" />
+        <PropertyCard title="Depto Rímini" price="$580.000 CLP/mes" address="Calle Prat, Antofagasta" type="arriendo" typeLabel={t('properties.badge_rent')} beds="1" baths="1" area="45 m²" />
+        <PropertyCard title="Casa Sector Norte" price="UF 3.200" address="Sector Norte, Antofagasta" type="venta" typeLabel={t('properties.badge_sale')} beds="3" baths="2" area="120 m²" />
+        <PropertyCard title="Depto Centro" price="$720.000 CLP/mes" address="Centro, Antofagasta" type="arriendo" typeLabel={t('properties.badge_rent')} beds="2" baths="2" area="75 m²" />
+        <PropertyCard title="Depto Corporativo" price="$850.000 CLP/mes" address="Av. Angamos, Antofagasta" type="arriendo" typeLabel={t('properties.badge_rent')} beds="3" baths="2" area="90 m²" />
+        <PropertyCard title="Casa Jardines del Sur" price="UF 4.500" address="Jardines del Sur, Antofagasta" type="venta" typeLabel={t('properties.badge_sale')} beds="4" baths="3" area="180 m²" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .properties-page { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
+  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-8); letter-spacing: var(--letter-spacing-tight); }
+  .properties-filters { display: flex; gap: var(--space-3); justify-content: center; margin-bottom: var(--section-gap); flex-wrap: wrap; }
+  .filter-btn { padding: var(--space-2) var(--space-5); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); border: 1px solid var(--color-border); background: none; color: var(--color-text-secondary); cursor: pointer; text-transform: uppercase; letter-spacing: var(--letter-spacing-wide); transition: all var(--transition-fast); font-family: var(--font-family); }
+  .filter-btn:hover, .filter-btn--active { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
+  .properties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); }
+</style>

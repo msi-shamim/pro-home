@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/index';
+const t = useTranslations('es');
+---
+
+<BaseLayout title={t('services_detail.investment_title') + ' | PRO HOME®'} description={t('services_detail.investment_desc')}>
+  <section class="service-detail" id="service-servicio-de-inversion">
+    <div class="container">
+      <a href="/es/servicios" class="service-detail__back">{t('services_detail.back_to_services')}</a>
+      <h1 class="service-detail__title">{t('services_detail.investment_title')}</h1>
+      <p class="service-detail__desc">{t('services_detail.investment_desc')}</p>
+      <a href="/es/contacto" class="service-detail__cta">{t('services_detail.cta_contact')}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .service-detail { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
+  .service-detail__back { display: inline-block; margin-bottom: var(--space-8); font-size: var(--font-size-sm); color: var(--color-muted); text-decoration: none; }
+  .service-detail__back:hover { color: var(--color-accent); }
+  .service-detail__title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); margin-bottom: var(--space-6); letter-spacing: var(--letter-spacing-tight); max-width: 700px; }
+  .service-detail__desc { font-size: var(--font-size-md); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); max-width: 700px; margin-bottom: var(--space-8); }
+  .service-detail__cta { display: inline-block; padding: var(--space-4) var(--space-8); background: var(--color-accent); color: var(--color-bg); font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); text-decoration: none; transition: opacity var(--transition-fast); }
+  .service-detail__cta:hover { opacity: 0.85; }
+</style>

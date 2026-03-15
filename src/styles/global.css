@@ -1,0 +1,251 @@
+/* ==========================================================================
+   PRO HOME — Global Design System
+   Minimalism · Sharp Edges · 60/30/10 Rule
+   ========================================================================== */
+
+/* ---------- Google Font ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ---------- CSS Reset ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Design Tokens ---------- */
+:root {
+  /* --- Color Palette (Light Mode — Default) --- */
+  --color-bg:        #FFFFFF;   /* 60% white */
+  --color-surface:   #F5F5F5;   /* surface variant */
+  --color-muted:     #808080;   /* 30% gray */
+  --color-muted-bg:  #E8E8E8;   /* subtle gray background */
+  --color-accent:    #000000;   /* 10% black */
+  --color-text:      #111111;
+  --color-text-secondary: #555555;
+  --color-border:    #D0D0D0;
+  --color-overlay:   rgba(0, 0, 0, 0.5);
+
+  /* --- Typography --- */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs:   0.75rem;    /* 12px */
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-md:   1.125rem;   /* 18px */
+  --font-size-lg:   1.25rem;    /* 20px */
+  --font-size-xl:   1.5rem;     /* 24px */
+  --font-size-2xl:  2rem;       /* 32px */
+  --font-size-3xl:  2.5rem;     /* 40px */
+  --font-size-4xl:  3rem;       /* 48px */
+  --font-size-5xl:  4rem;       /* 64px */
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+  --line-height-tight:  1.1;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --letter-spacing-tight:  -0.02em;
+  --letter-spacing-normal:  0;
+  --letter-spacing-wide:    0.05em;
+  --letter-spacing-wider:   0.1em;
+
+  /* --- Spacing Scale --- */
+  --space-1:  0.25rem;   /* 4px */
+  --space-2:  0.5rem;    /* 8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+  --space-40: 10rem;     /* 160px */
+
+  /* --- Section-Level Spacing (premium breathing room) --- */
+  --section-padding-y:      var(--space-32);   /* 128px default */
+  --section-padding-y-hero: var(--space-40);   /* 160px for hero sections */
+  --section-gap:            var(--space-16);   /* 64px between inner elements */
+
+  /* --- Layout --- */
+  --container-max: 1200px;
+  --navbar-height: 72px;
+  --mobile-nav-height: 64px;
+  --fab-size: 56px;
+  --fab-offset: 24px;
+
+  /* --- Sharp Edges (zero radius) --- */
+  --radius: 0;
+
+  /* --- Transitions --- */
+  --transition-fast:   150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow:   500ms ease;
+
+  /* --- Shadows (minimal) --- */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:  0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg:  0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-xl:  0 8px 32px rgba(0, 0, 0, 0.16);
+
+  /* --- Z-Index Scale --- */
+  --z-base:     1;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-drawer:   400;
+  --z-modal:    500;
+  --z-fab:      600;
+  --z-toast:    700;
+}
+
+/* ---------- Dark Mode ---------- */
+[data-theme="dark"] {
+  --color-bg:        #000000;   /* 60% black */
+  --color-surface:   #111111;
+  --color-muted:     #D3D3D3;   /* 30% light gray */
+  --color-muted-bg:  #1A1A1A;
+  --color-accent:    #FFFFFF;   /* 10% white */
+  --color-text:      #F0F0F0;
+  --color-text-secondary: #AAAAAA;
+  --color-border:    #333333;
+  --color-overlay:   rgba(0, 0, 0, 0.7);
+  --shadow-sm:  0 1px 2px rgba(255, 255, 255, 0.03);
+  --shadow-md:  0 2px 8px rgba(255, 255, 255, 0.05);
+  --shadow-lg:  0 4px 16px rgba(255, 255, 255, 0.06);
+  --shadow-xl:  0 8px 32px rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Base Styles ---------- */
+html {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---------- Utility Classes ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Responsive Visibility ---------- */
+@media (max-width: 767px) {
+  .desktop-only { display: none !important; }
+}
+
+@media (min-width: 768px) {
+  .mobile-only { display: none !important; }
+}
+
+/* ---------- Mobile Body Padding ---------- */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: var(--mobile-nav-height);
+  }
+
+  /* Push WhatsApp FAB above the bottom nav */
+  #whatsapp-fab {
+    bottom: calc(var(--mobile-nav-height) + var(--fab-offset)) !important;
+  }
+}
+
+/* ---------- Scrollbar (minimal) ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+}
+
+/* ---------- Scroll-Reveal Animation System ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children inside a revealed parent */
+[data-reveal-delay="1"] { transition-delay: 0.1s; }
+[data-reveal-delay="2"] { transition-delay: 0.2s; }
+[data-reveal-delay="3"] { transition-delay: 0.35s; }
+[data-reveal-delay="4"] { transition-delay: 0.5s; }
+
+/* Navbar always visible immediately */
+.navbar,
+.desktop-only {
+  animation: navIn 0.4s ease forwards;
+}
+
+@keyframes navIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

@@ -1,0 +1,93 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang: 'es' | 'en';
+  currentPath: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  lang,
+  currentPath,
+  ogImage = '/og-default.png',
+} = Astro.props;
+
+const altLang = lang === 'es' ? 'en' : 'es';
+const altPath = currentPath.replace(`/${lang}`, `/${altLang}`);
+const siteUrl = 'https://www.pro-home.cl';
+const canonicalUrl = `${siteUrl}${currentPath}`;
+const altUrl = `${siteUrl}${altPath}`;
+const ogImageUrl = `${siteUrl}${ogImage}`;
+---
+
+<!-- Primary Meta -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- i18n / hreflang -->
+<link rel="alternate" hreflang={lang === 'es' ? 'es-CL' : 'en-US'} href={canonicalUrl} />
+<link rel="alternate" hreflang={altLang === 'es' ? 'es-CL' : 'en-US'} href={altUrl} />
+<link rel="alternate" hreflang="x-default" href={`${siteUrl}/es`} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content={lang === 'es' ? 'es_CL' : 'en_US'} />
+<meta property="og:locale:alternate" content={altLang === 'es' ? 'es_CL' : 'en_US'} />
+<meta property="og:site_name" content="PRO HOME®" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Structured Data: LocalBusiness -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "PRO HOME®",
+  "description": lang === 'es'
+    ? "Expertos en contratos B2B e inversión inmobiliaria en Antofagasta, Chile."
+    : "Experts in B2B contracts and real estate investment in Antofagasta, Chile.",
+  "url": siteUrl,
+  "logo": `${siteUrl}/logo.png`,
+  "telephone": "+56931319706",
+  "email": "contacto@pro-home.cl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Balmaceda 2455, Oficina 1209",
+    "addressLocality": "Antofagasta",
+    "addressCountry": "CL"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/_pro_home_/",
+    "https://www.facebook.com/p/Pro-Home-100063693451178/"
+  ]
+})} />

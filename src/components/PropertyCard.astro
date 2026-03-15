@@ -1,0 +1,147 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  address: string;
+  type: 'arriendo' | 'venta';
+  typeLabel: string;
+  beds?: string;
+  baths?: string;
+  area?: string;
+  href?: string;
+}
+
+const { title, price, address, type, typeLabel, beds, baths, area, href = '#' } = Astro.props;
+---
+
+<a href={href} class="property-card" id={`property-${title.replace(/\s+/g, '-').toLowerCase().slice(0, 20)}`}>
+  <!-- Image Placeholder -->
+  <div class="property-card__image">
+    <span class:list={['property-card__badge', `property-card__badge--${type}`]}>{typeLabel}</span>
+    <div class="property-card__logo">PRO HOME®</div>
+  </div>
+
+  <!-- Info -->
+  <div class="property-card__info">
+    <h3 class="property-card__title">{title}</h3>
+    <p class="property-card__address">{address}</p>
+
+    <!-- Specs -->
+    <div class="property-card__specs">
+      {area && (
+        <span class="property-card__spec">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="3" y="3" width="18" height="18" /></svg>
+          {area}
+        </span>
+      )}
+      {beds && (
+        <span class="property-card__spec">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 012 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+          {beds}
+        </span>
+      )}
+      {baths && (
+        <span class="property-card__spec">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1z"/><path d="M6 12V5a2 2 0 012-2h3v2.25"/></svg>
+          {baths}
+        </span>
+      )}
+    </div>
+
+    <!-- Price -->
+    <p class="property-card__price">{price}</p>
+  </div>
+</a>
+
+<style>
+  .property-card {
+    display: block;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    text-decoration: none;
+    transition: border-color var(--transition-fast);
+    overflow: hidden;
+  }
+
+  .property-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .property-card__image {
+    position: relative;
+    height: 200px;
+    background: var(--color-muted-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .property-card__badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  .property-card__badge--arriendo {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .property-card__badge--venta {
+    background: var(--color-bg);
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+  }
+
+  .property-card__logo {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-black);
+    color: var(--color-muted);
+    letter-spacing: var(--letter-spacing-wide);
+    opacity: 0.4;
+  }
+
+  .property-card__info {
+    padding: var(--space-5);
+  }
+
+  .property-card__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent);
+    margin-bottom: var(--space-1);
+    line-height: var(--line-height-tight);
+  }
+
+  .property-card__address {
+    font-size: var(--font-size-xs);
+    color: var(--color-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .property-card__specs {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .property-card__spec {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+
+  .property-card__price {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-black);
+    color: var(--color-accent);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+</style>

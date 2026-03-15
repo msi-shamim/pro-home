@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "properties": "¡VIVE LA EXPERIENCIA!",
+    "contact": "Contacto",
+    "reserve": "Reservar",
+    "menu": "Menú",
+    "whyProHome": "¿Por Qué PRO HOME?"
+  },
+  "services_dropdown": {
+    "property_management": "Gestión Inmobiliaria",
+    "property_admin": "Administración de Propiedades",
+    "short_term": "Administración Corto Plazo",
+    "investment": "Servicio de Inversión",
+    "pro_home_care": "Pro-Home Care",
+    "cleaning": "Limpieza de Propiedades",
+    "maintenance": "Mantenimiento de Propiedades",
+    "design": "Diseño y Decoración",
+    "corporate_lodging": "Logística de Alojamiento para Empresas"
+  },
+  "hero": {
+    "tagline": "Expertos en Contratos B2B e Inversión",
+    "cta": "Contáctanos",
+    "subtitle": "Gestión inmobiliaria premium en Antofagasta"
+  },
+  "benefits": {
+    "title": "Beneficios de Trabajar con PRO HOME®",
+    "best_rates_title": "Las mejores tarifas de alquiler del mercado garantizadas",
+    "best_rates_desc": "En casi todos los casos, podemos aumentar el pago mensual que recibes por tu propiedad entre un 5% y un 15%. Esto lo conseguimos gracias a nuestras alianzas y a nuestra experiencia en encontrar los mejores inquilinos, lo que nos permite mejorar tus ingresos de manera segura y efectiva.",
+    "tenant_mgmt_title": "Gestión de inquilinos de espectro completo",
+    "tenant_mgmt_desc": "Además de nuestro programa de selección de nuevos inquilinos de 10 pasos, el secreto de nuestro éxito es ser proactivos y estar en constante comunicación con nuestros inquilinos.",
+    "maintenance_title": "Costos de mantenimiento y reparación más bajos",
+    "maintenance_desc": "Hemos formado un equipo propio para realizar trabajos de mantenimiento y reparación en las propiedades que gestionamos. Además, contamos con proveedores cuidadosamente seleccionados, logrando precios preferenciales.",
+    "support_title": "Soporte administrativo integral",
+    "support_desc": "Pro Home es experto en la logística de alojamiento para empresas, garantizando una gestión eficiente y personalizada para cumplir con las necesidades de empresas que requieren espacios de calidad para sus empleados o proyectos temporales."
+  },
+  "clients": {
+    "title": "Nuestros Clientes"
+  },
+  "contact": {
+    "title": "Contacto",
+    "phone": "(+569) 3131 9706",
+    "email": "contacto@pro-home.cl",
+    "footer_email": "hola@pro-home.cl",
+    "address": "Av. Balmaceda 2455, Oficina 1209, Antofagasta, Chile",
+    "hours": "Lunes a Viernes 09:00 hrs. a 18:00 hrs. / Sábados 09:00 hrs a 13:00 hrs.",
+    "download_profile": "Descargar perfil de la empresa"
+  },
+  "footer": {
+    "objective_title": "Objetivo",
+    "objective_text": "Nuestro objetivo es ofrecerte la tranquilidad que necesitas para maximizar tus ingresos. Contamos con una amplia gama de herramientas y un profundo conocimiento en diversas áreas, que combinamos estratégicamente para generar un éxito mutuo.",
+    "office": "Oficina de Atención",
+    "rights": "© 2026 PRO HOME®. Todos los derechos reservados."
+  },
+  "theme": {
+    "light": "Modo Claro",
+    "dark": "Modo Oscuro"
+  },
+  "lang": {
+    "switch": "English",
+    "current": "ES"
+  },
+  "seo": {
+    "home_title": "PRO HOME® | Gestión Inmobiliaria Premium en Antofagasta",
+    "home_description": "Expertos en contratos B2B e inversión inmobiliaria en Antofagasta, Chile. Administración de propiedades, alojamiento corporativo y servicios inmobiliarios premium.",
+    "services_title": "Servicios | PRO HOME®",
+    "services_description": "Gestión inmobiliaria integral, alojamiento corporativo, limpieza, mantenimiento y diseño de propiedades en Antofagasta.",
+    "properties_title": "Propiedades | PRO HOME®",
+    "properties_description": "Explora propiedades en arriendo y venta en Antofagasta. Departamentos, casas y soluciones corporativas de PRO HOME®.",
+    "contact_title": "Contacto | PRO HOME®",
+    "contact_description": "Contáctanos para gestión de propiedades, alojamiento corporativo y servicios inmobiliarios en Antofagasta, Chile."
+  },
+  "whatsapp": {
+    "aria_label": "Contactar por WhatsApp"
+  },
+  "drawer": {
+    "close": "Cerrar menú"
+  },
+  "funnel": {
+    "propietarios_headline": "¿Cansado de tener problemas con arrendatarios?",
+    "propietarios_sub": "Maximiza tus ingresos con contratos B2B garantizados. Aumentamos tu renta mensual entre un 5% y un 15%.",
+    "propietarios_cta": "Solicitar Evaluación Gratuita",
+    "propietarios_form_title": "Evaluación Gratuita de tu Propiedad",
+    "propietarios_success": "¡Gracias! Te contactaremos por WhatsApp dentro de 24 horas.",
+    "empresas_headline": "Alojamiento Corporativo en Antofagasta",
+    "empresas_sub": "Soluciones integrales de alojamiento para empresas mineras, energéticas y de construcción en la Región de Antofagasta.",
+    "empresas_cta": "Solicitar Propuesta Corporativa",
+    "empresas_form_title": "Solicitar Propuesta Corporativa",
+    "empresas_success": "¡Propuesta solicitada! Nuestro equipo B2B te contactará en breve.",
+    "empresas_capabilities": "Gestión de reservas, check-in/check-out, transporte, soporte 24/7, facturación empresarial"
+  },
+  "form": {
+    "name": "Nombre completo",
+    "whatsapp": "WhatsApp",
+    "email": "Correo electrónico",
+    "property_details": "Detalles de la propiedad",
+    "property_placeholder": "Ubicación, tipo de propiedad, número de habitaciones...",
+    "company_details": "Detalles del requerimiento",
+    "company_placeholder": "Número de personas, duración, servicios requeridos..."
+  },
+  "thankyou": {
+    "title": "¡Gracias por contactarnos!",
+    "message": "Tu solicitud ha sido recibida. Nuestro equipo te contactará por WhatsApp dentro de las próximas 24 horas.",
+    "cta_home": "Volver al inicio",
+    "cta_properties": "Explorar propiedades"
+  },
+  "homepage": {
+    "cta_propietarios": "Soy Propietario",
+    "cta_empresas": "Soy Empresa",
+    "services_title": "Nuestros Servicios",
+    "reviews_title": "Lo Que Dicen Nuestros Clientes"
+  },
+  "services_detail": {
+    "admin_title": "Administración de Propiedades",
+    "admin_desc": "Gestión integral de propiedades bajo la modalidad B2B. Nos encargamos de todo: selección de inquilinos, contratos, mantención y cobranza.",
+    "short_term_title": "Administración Corto Plazo",
+    "short_term_desc": "Gestión completa de tu propiedad en plataformas de alquiler temporal. 6 pasos: evaluación, fotografía, publicación, gestión de reservas, limpieza y reportes.",
+    "investment_title": "Servicio de Inversión",
+    "investment_desc": "Te asesoramos en la compra de propiedades con alto retorno. Análisis de mercado, búsqueda de propiedades y gestión documental completa.",
+    "cleaning_title": "Limpieza de Propiedades",
+    "cleaning_desc": "Servicio de limpieza profesional para check-in/check-out y mantenimiento regular de propiedades.",
+    "maintenance_title": "Mantenimiento de Propiedades",
+    "maintenance_desc": "Equipo propio de mantenimiento y reparación. Precios preferenciales con proveedores seleccionados.",
+    "design_title": "Diseño y Decoración",
+    "design_desc": "Amoblamiento y decoración de departamentos para maximizar atractivo y valor de arriendo.",
+    "corporate_title": "Logística de Alojamiento para Empresas",
+    "corporate_desc": "Soluciones de alojamiento para empresas con operaciones en la Región de Antofagasta. Gestión integral de hospedaje para equipos de trabajo.",
+    "cta_contact": "Consultar servicio",
+    "back_to_services": "← Volver a servicios"
+  },
+  "team": {
+    "title": "Nuestro Equipo",
+    "alessandra_role": "Fundadora y Directora General",
+    "alessandra_bg": "Ingeniera Comercial, con vasta experiencia en administración inmobiliaria y desarrollo de negocios B2B.",
+    "diego_role": "Director de Operaciones",
+    "diego_bg": "Ingeniero en Minas, experto en logística empresarial y gestión de proyectos.",
+    "luis_role": "Director de Inversión",
+    "luis_bg": "Ingeniero Comercial, especialista en análisis de mercado y estrategias de inversión inmobiliaria.",
+    "angely_role": "Coordinadora General",
+    "angely_bg": "Administradora de Empresas, gestión administrativa y atención al cliente."
+  },
+  "why": {
+    "title": "¿Por Qué PRO HOME?",
+    "philosophy": "Nuestro objetivo es ofrecerte la tranquilidad que necesitas para maximizar tus ingresos. Contamos con una amplia gama de herramientas y un profundo conocimiento en diversas áreas."
+  },
+  "properties": {
+    "title": "Propiedades Disponibles",
+    "filter_all": "Todas",
+    "filter_rent": "Arriendo",
+    "filter_sale": "Venta",
+    "no_results": "No se encontraron propiedades.",
+    "badge_rent": "ARRIENDO",
+    "badge_sale": "VENTA"
+  },
+  "contact_page": {
+    "title": "Contáctanos",
+    "subtitle": "Estamos aquí para ayudarte con cualquier consulta sobre nuestros servicios inmobiliarios.",
+    "form_title": "Envíanos un mensaje",
+    "form_cta": "Enviar mensaje",
+    "form_success": "¡Mensaje enviado! Te responderemos pronto.",
+    "message_label": "Mensaje",
+    "message_placeholder": "Cuéntanos en qué podemos ayudarte..."
+  },
+  "reservation": {
+    "title": "Reservar Alojamiento",
+    "subtitle": "Departamentos amoblados en Antofagasta para estadías cortas y corporativas."
+  },
+  "seo_pages": {
+    "propietarios_title": "Propietarios — Evaluación Gratuita | PRO HOME®",
+    "propietarios_desc": "¿Tienes una propiedad en Antofagasta? Maximiza tus ingresos con contratos B2B. Solicita tu evaluación gratuita.",
+    "empresas_title": "Empresas — Alojamiento Corporativo | PRO HOME®",
+    "empresas_desc": "Alojamiento corporativo en Antofagasta para empresas mineras, energéticas y de construcción. Solicita tu propuesta.",
+    "gracias_title": "¡Gracias! | PRO HOME®",
+    "gracias_desc": "Tu solicitud ha sido recibida. PRO HOME® te contactará pronto.",
+    "why_title": "¿Por Qué PRO HOME? | PRO HOME®",
+    "why_desc": "Conoce al equipo detrás de PRO HOME® y nuestra filosofía de gestión inmobiliaria premium.",
+    "reservation_title": "Reservar Alojamiento | PRO HOME®",
+    "reservation_desc": "Reserva tu departamento amoblado en Antofagasta. Estadías cortas y corporativas con PRO HOME®."
+  }
+}
