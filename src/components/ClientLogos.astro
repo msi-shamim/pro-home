@@ -5,22 +5,54 @@ interface Props {
 
 const { title } = Astro.props;
 
-const clients = [
-  'CJR Renewables', 'INTEALSA', 'CheckIn Hotel', 'SICOMAQ',
-  'bioclean', 'DALI', 'SKF', 'San Francisco Ingeniería',
-  'CleanTech Lithium', 'Inv. VYL SpA', 'AlbaNetwork', 'GMT',
-  'aramark', 'thyssenkrupp', 'CONPRETEDECOR',
+const allLogos = [
+  { folder: 'Upper', file: 'clients_1.jpg' },
+  { folder: 'Upper', file: 'clients_2.jpg' },
+  { folder: 'Upper', file: 'clients_4.jpg' },
+  { folder: 'Upper', file: 'clients_5.jpg' },
+  { folder: 'Upper', file: 'clients_6.jpg' },
+  { folder: 'Upper', file: 'clients_7.jpg' },
+  { folder: 'Upper', file: 'clients_8.jpg' },
+  { folder: 'Upper', file: 'clients_9.jpg' },
+  { folder: 'Upper', file: 'clients_10.jpg' },
+  { folder: 'Upper', file: 'clients_11.jpg' },
+  { folder: 'Upper', file: 'clients_12.jpg' },
+  { folder: 'Upper', file: 'clients_13.jpg' },
+  { folder: 'Upper', file: 'clients_14.jpg' },
+  { folder: 'Upper', file: 'clients_15.jpg' },
+  { folder: 'Upper', file: 'clients_16.jpg' },
+  { folder: 'Upper', file: 'clients_17.jpg' },
+  { folder: 'Upper', file: 'clients_18.jpg' },
+  { folder: 'Upper', file: 'clients_19.jpg' },
+  { folder: 'Down', file: 'clients_20.jpg' },
+  { folder: 'Down', file: 'clients_21.jpg' },
+  { folder: 'Down', file: 'clients_22.jpg' },
+  { folder: 'Down', file: 'clients_23.jpg' },
+  { folder: 'Down', file: 'clients_24.jpg' },
+  { folder: 'Down', file: 'clients_25.jpg' },
+  { folder: 'Down', file: 'clients_26.jpg' },
+  { folder: 'Down', file: 'clients_27.jpg' },
+  { folder: 'Down', file: 'clients_28.jpg' },
+  { folder: 'Down', file: 'clients_29.jpg' },
+  { folder: 'Down', file: 'clients_30.jpg' },
+  { folder: 'Down', file: 'clients_31.jpg' },
+  { folder: 'Down', file: 'clients_32.jpg' },
+  { folder: 'Down', file: 'clients_33.jpg' },
+  { folder: 'Down', file: 'clients_34.jpg' },
+  { folder: 'Down', file: 'clients_35.jpg' },
+  { folder: 'Down', file: 'clients_36 (1).jpg' },
 ];
 ---
 
 <section class="clients" id="client-logos" data-reveal>
   <div class="container">
     <h2 class="clients__title">{title}</h2>
+
     <div class="clients__track">
       <div class="clients__marquee">
-        {[...clients, ...clients].map((name, i) => (
+        {[...allLogos, ...allLogos].map((logo) => (
           <div class="clients__item">
-            <span>{name}</span>
+            <img src={`/images/assets/Brands/${logo.folder}/${logo.file}`} alt="Client logo" loading="lazy" />
           </div>
         ))}
       </div>
@@ -46,15 +78,20 @@ const clients = [
 
   .clients__track {
     overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    margin-bottom: var(--space-3);
+  }
+
+  .clients__track:last-child {
+    margin-bottom: 0;
   }
 
   .clients__marquee {
     display: flex;
-    gap: var(--space-8);
-    animation: marquee 30s linear infinite;
+    gap: var(--space-4);
     width: max-content;
+    animation: marquee 50s linear infinite;
   }
 
   .clients__item {
@@ -62,16 +99,37 @@ const clients = [
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-3) var(--space-6);
-    border: 1px solid var(--color-border);
-    white-space: nowrap;
+    height: 172px;
+    padding: 0 var(--space-3);
+    transition: transform 0.3s ease;
   }
 
-  .clients__item span {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    letter-spacing: var(--letter-spacing-wide);
+  .clients__item:hover {
+    transform: translateY(-2px);
+  }
+
+  .clients__item img {
+    height: 160px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+    filter: none;
+    transition: filter 0.3s ease;
+    mix-blend-mode: multiply;
+  }
+
+  :global([data-theme="dark"]) .clients__item img {
+    filter: invert(1);
+    mix-blend-mode: screen;
+  }
+
+  .clients__item:hover img {
+    filter: none;
+  }
+
+  :global([data-theme="dark"]) .clients__item:hover img {
+    filter: invert(1);
+    mix-blend-mode: screen;
   }
 
   @keyframes marquee {

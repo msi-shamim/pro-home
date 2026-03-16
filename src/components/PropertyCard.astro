@@ -65,12 +65,14 @@ const { title, price, address, type, typeLabel, beds, baths, area, href = '#', i
     border: 1px solid var(--color-border);
     background: var(--color-surface);
     text-decoration: none;
-    transition: border-color var(--transition-fast);
+    transition: transform 0.4s var(--ease-out-expo), border-color 0.3s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
     overflow: hidden;
   }
 
   .property-card:hover {
     border-color: var(--color-accent);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-dramatic);
   }
 
   .property-card__image {
@@ -85,11 +87,11 @@ const { title, price, address, type, typeLabel, beds, baths, area, href = '#', i
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform var(--transition-normal);
+    transition: transform 0.6s var(--ease-out-expo);
   }
 
   .property-card:hover .property-card__image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
 
   .property-card__badge {

@@ -61,6 +61,9 @@ const currentPath = Astro.url.pathname;
       <slot />
     </main>
 
+    <!-- Film Grain Overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
     <!-- Footer -->
     <Footer lang={lang} />
 
@@ -128,6 +131,33 @@ const currentPath = Astro.url.pathname;
         }, { threshold: 0.15 });
         els.forEach(function(el) { io.observe(el); });
       });
+    </script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script>
+      import Lenis from 'lenis';
+
+      function initLenis() {
+        if (window.__lenis) {
+          window.__lenis.destroy();
+        }
+
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        window.__lenis = lenis;
+      }
+
+      initLenis();
+      document.addEventListener('astro:page-load', initLenis);
     </script>
   </body>
 </html>

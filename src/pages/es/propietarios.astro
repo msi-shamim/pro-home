@@ -28,6 +28,8 @@ const t = useTranslations('es');
   <BenefitsSection
     client:visible
     sectionTitle={t('benefits.title')}
+    seeMoreLabel="Ver más"
+    seeLessLabel="Ver menos"
     benefits={[
       { icon: 'rates', title: t('benefits.best_rates_title'), description: t('benefits.best_rates_desc') },
       { icon: 'tenants', title: t('benefits.tenant_mgmt_title'), description: t('benefits.tenant_mgmt_desc') },
@@ -110,11 +112,28 @@ const t = useTranslations('es');
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wider);
     text-decoration: none;
-    transition: opacity var(--transition-fast);
+    transition: transform 0.25s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .funnel-hero__cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
   }
 
   .funnel-hero__cta:hover {
-    opacity: 0.85;
+    transform: scale(1.05);
+  }
+
+  .funnel-hero__cta:hover::after {
+    opacity: 1;
+    animation: shimmer 1.5s ease infinite;
   }
 
   .funnel-form-section {

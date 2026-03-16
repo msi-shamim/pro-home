@@ -33,9 +33,73 @@ const t = useTranslations('es');
 
 <style>
   .properties-page { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
-  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-8); letter-spacing: var(--letter-spacing-tight); }
-  .properties-filters { display: flex; gap: var(--space-3); justify-content: center; margin-bottom: var(--section-gap); flex-wrap: wrap; }
-  .filter-btn { padding: var(--space-2) var(--space-5); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); border: 1px solid var(--color-border); background: none; color: var(--color-text-secondary); cursor: pointer; text-transform: uppercase; letter-spacing: var(--letter-spacing-wide); transition: all var(--transition-fast); font-family: var(--font-family); }
-  .filter-btn:hover, .filter-btn--active { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
-  .properties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); }
+  
+  .page-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--space-4);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: var(--space-4) auto 0;
+  }
+
+  .properties-filters {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+    margin-bottom: var(--section-gap);
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: var(--space-2) var(--space-6);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    border: 1px solid var(--color-border);
+    background: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    transition: all 0.3s var(--ease-out-expo);
+    font-family: var(--font-family);
+    border-radius: var(--radius-pill);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .filter-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .filter-btn--active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: var(--color-accent);
+  }
+
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+
+  /* Stagger animation for property cards */
+  .properties-grid > :nth-child(1) { animation-delay: 0.05s; }
+  .properties-grid > :nth-child(2) { animation-delay: 0.1s; }
+  .properties-grid > :nth-child(3) { animation-delay: 0.15s; }
+  .properties-grid > :nth-child(4) { animation-delay: 0.2s; }
+  .properties-grid > :nth-child(5) { animation-delay: 0.25s; }
+  .properties-grid > :nth-child(6) { animation-delay: 0.3s; }
 </style>

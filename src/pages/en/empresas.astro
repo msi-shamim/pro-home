@@ -13,6 +13,7 @@ const capabilities = t('funnel.empresas_capabilities').split(', ');
   title={t('seo_pages.empresas_title')}
   description={t('seo_pages.empresas_desc')}
 >
+  <!-- Hero -->
   <section class="funnel-hero" id="empresas-hero">
     <div class="container">
       <p class="funnel-hero__label"><span class="logo-bold">PRO</span> <span class="logo-thin">HOME</span>® — B2B</p>
@@ -24,6 +25,7 @@ const capabilities = t('funnel.empresas_capabilities').split(', ');
     </div>
   </section>
 
+  <!-- Capabilities -->
   <section class="capabilities" id="empresas-capabilities">
     <div class="container">
       <div class="capabilities__grid">
@@ -39,8 +41,10 @@ const capabilities = t('funnel.empresas_capabilities').split(', ');
     </div>
   </section>
 
+  <!-- Client Logos -->
   <ClientLogos title={t('clients.title')} />
 
+  <!-- Lead Form -->
   <section class="funnel-form-section" id="empresas-form-section">
     <div class="container" style="display: flex; justify-content: center;">
       <LeadCaptureForm
@@ -49,7 +53,7 @@ const capabilities = t('funnel.empresas_capabilities').split(', ');
         formType="empresas"
         ctaLabel={t('funnel.empresas_cta')}
         successMessage={t('funnel.empresas_success')}
-        thankYouUrl="/en/gracias"
+        thankYouUrl="/es/gracias"
         fields={{
           name: t('form.name'),
           whatsapp: t('form.whatsapp'),
@@ -111,11 +115,28 @@ const capabilities = t('funnel.empresas_capabilities').split(', ');
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wider);
     text-decoration: none;
-    transition: opacity var(--transition-fast);
+    transition: transform 0.25s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .funnel-hero__cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
   }
 
   .funnel-hero__cta:hover {
-    opacity: 0.85;
+    transform: scale(1.05);
+  }
+
+  .funnel-hero__cta:hover::after {
+    opacity: 1;
+    animation: shimmer 1.5s ease infinite;
   }
 
   .capabilities {
@@ -138,11 +159,23 @@ const capabilities = t('funnel.empresas_capabilities').split(', ');
     background: var(--color-surface);
     font-size: var(--font-size-sm);
     color: var(--color-text);
+    transition: transform 0.3s var(--ease-out-expo), border-color 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
+  }
+
+  .capabilities__card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
   }
 
   .capabilities__card svg {
     flex-shrink: 0;
     color: var(--color-accent);
+    transition: transform 0.3s var(--ease-out-expo);
+  }
+
+  .capabilities__card:hover svg {
+    transform: scale(1.15);
   }
 
   .funnel-form-section {

@@ -50,20 +50,90 @@ const t = useTranslations('es');
 
 <style>
   .reservation-page { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
-  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-4); letter-spacing: var(--letter-spacing-tight); }
-  .page-subtitle { font-size: var(--font-size-md); color: var(--color-text-secondary); text-align: center; max-width: 600px; margin: 0 auto var(--section-gap); line-height: var(--line-height-relaxed); }
-  .reservation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-8); }
-  .reservation-card { border: 1px solid var(--color-border); background: var(--color-surface); overflow: hidden; transition: border-color var(--transition-fast); }
-  .reservation-card:hover { border-color: var(--color-accent); }
+
+  .page-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--space-4);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: var(--space-4) auto 0;
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--section-gap);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .reservation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .reservation-card {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    overflow: hidden;
+    transition: transform 0.4s var(--ease-out-expo), border-color 0.3s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+  }
+
+  .reservation-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-dramatic);
+  }
+
   .reservation-card__image { position: relative; height: 220px; background: var(--color-muted-bg); overflow: hidden; }
-  .reservation-card__image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-normal); }
-  .reservation-card:hover .reservation-card__image img { transform: scale(1.05); }
-  .reservation-card__badge { position: absolute; top: var(--space-3); left: var(--space-3); padding: var(--space-1) var(--space-3); background: #25D366; color: #fff; font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); z-index: 1; }
+  .reservation-card__image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s var(--ease-out-expo); }
+  .reservation-card:hover .reservation-card__image img { transform: scale(1.08); }
+
+  /* B&W badge per client requirement */
+  .reservation-card__badge { position: absolute; top: var(--space-3); left: var(--space-3); padding: var(--space-1) var(--space-3); background: var(--color-accent); color: var(--color-bg); font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); z-index: 1; }
   .reservation-card__hologram { position: absolute; bottom: var(--space-3); right: var(--space-3); padding: var(--space-1) var(--space-3); font-size: 0.65rem; font-weight: var(--font-weight-black); letter-spacing: var(--letter-spacing-wider); color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.35); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 1; pointer-events: none; }
   .reservation-card__info { padding: var(--space-6); }
   .reservation-card__info h3 { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); color: var(--color-accent); margin-bottom: var(--space-2); }
   .reservation-card__specs { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-3); }
   .reservation-card__price { font-size: var(--font-size-xl); font-weight: var(--font-weight-black); color: var(--color-accent); margin-bottom: var(--space-4); }
-  .reservation-card__cta { display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-accent); color: var(--color-bg); font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); text-decoration: none; transition: opacity var(--transition-fast); }
-  .reservation-card__cta:hover { opacity: 0.85; }
+
+  .reservation-card__cta {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    transition: transform 0.25s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reservation-card__cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .reservation-card__cta:hover { transform: scale(1.05); }
+  .reservation-card__cta:hover::after { opacity: 1; animation: shimmer 1.5s ease infinite; }
 </style>

@@ -1,0 +1,99 @@
+---
+interface Props {
+  items: string[];
+  speed?: number;
+  separator?: string;
+}
+
+const { items, speed = 30, separator = '·' } = Astro.props;
+
+// Duplicate for seamless loop
+const display = [...items, ...items, ...items];
+---
+
+<div class="marquee-wrapper" aria-label="Client marquee">
+  <div class="marquee-track" style={`animation-duration: ${speed}s;`}>
+    {display.map((item, i) => (
+      <span class="marquee-item" key={i}>
+        <span class="marquee-text">{item}</span>
+        <span class="marquee-sep" aria-hidden="true">{separator}</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: var(--space-6) 0;
+  }
+
+  /* Edge fade */
+  .marquee-wrapper::before,
+  .marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-bg), transparent);
+  }
+
+  .marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-bg), transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: max-content;
+    animation: marqueeScroll linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-shrink: 0;
+    padding: 0 var(--space-4);
+  }
+
+  .marquee-text {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    transition: color var(--transition-fast);
+  }
+
+  .marquee-item:hover .marquee-text {
+    color: var(--color-accent);
+  }
+
+  .marquee-sep {
+    color: var(--color-muted);
+    font-size: var(--font-size-xs);
+  }
+
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+</style>

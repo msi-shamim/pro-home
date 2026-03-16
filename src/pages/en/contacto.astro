@@ -11,14 +11,16 @@ const t = useTranslations('en');
     <div class="container">
       <h1 class="page-title">{t('contact_page.title')}</h1>
       <p class="page-subtitle">{t('contact_page.subtitle')}</p>
+
       <div class="contact-grid">
+        <!-- Form -->
         <LeadCaptureForm
           client:visible
           formTitle={t('contact_page.form_title')}
           formType="contacto"
           ctaLabel={t('contact_page.form_cta')}
           successMessage={t('contact_page.form_success')}
-          thankYouUrl="/en/gracias"
+          thankYouUrl="/es/gracias"
           fields={{
             name: t('form.name'),
             whatsapp: t('form.whatsapp'),
@@ -27,6 +29,8 @@ const t = useTranslations('en');
             detailsPlaceholder: t('contact_page.message_placeholder'),
           }}
         />
+
+        <!-- Info -->
         <div class="contact-info">
           <div class="contact-info__block">
             <h3 class="contact-info__label">{t('footer.office')}</h3>
@@ -40,7 +44,9 @@ const t = useTranslations('en');
           <div class="contact-info__block">
             <p class="contact-info__hours">{t('contact.hours')}</p>
           </div>
-          <a href="https://wa.me/56931319706" class="contact-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp →</a>
+          <a href="https://wa.me/56931319706" class="contact-whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp →
+          </a>
         </div>
       </div>
 
@@ -67,17 +73,118 @@ const t = useTranslations('en');
 
 <style>
   .contact-page { padding: var(--section-padding-y-hero) 0 var(--section-padding-y); }
-  .page-title { font-size: var(--font-size-3xl); font-weight: var(--font-weight-black); color: var(--color-accent); text-align: center; margin-bottom: var(--space-4); letter-spacing: var(--letter-spacing-tight); }
-  .page-subtitle { font-size: var(--font-size-md); color: var(--color-text-secondary); text-align: center; max-width: 600px; margin: 0 auto var(--section-gap); line-height: var(--line-height-relaxed); }
-  .contact-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-10); }
-  @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
-  .contact-info { display: flex; flex-direction: column; gap: var(--space-6); }
-  .contact-info__block { padding: var(--space-5); border: 1px solid var(--color-border); background: var(--color-surface); }
-  .contact-info__block p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
-  .contact-info__label { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); color: var(--color-accent); margin-bottom: var(--space-2); }
-  .contact-info__hours { font-size: var(--font-size-xs); color: var(--color-muted); }
-  .contact-whatsapp { display: inline-block; padding: var(--space-4) var(--space-6); background: #25D366; color: #fff; font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); text-decoration: none; text-align: center; transition: opacity var(--transition-fast); }
-  .contact-whatsapp:hover { opacity: 0.85; }
+
+  .page-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--space-4);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: var(--space-4) auto 0;
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--section-gap);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  @media (min-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .contact-info__block {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo), border-color 0.3s var(--ease-out-expo);
+  }
+
+  .contact-info__block:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent);
+  }
+
+  .contact-info__block p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .contact-info__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .contact-info__hours {
+    font-size: var(--font-size-xs);
+    color: var(--color-muted);
+  }
+
+  /* WhatsApp CTA — B&W per client requirement */
+  .contact-whatsapp {
+    display: inline-block;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.25s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-whatsapp::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .contact-whatsapp:hover {
+    transform: scale(1.03);
+  }
+
+  .contact-whatsapp:hover::after {
+    opacity: 1;
+    animation: shimmer 1.5s ease infinite;
+  }
 
   /* Map */
   .contact-map {
@@ -97,7 +204,7 @@ const t = useTranslations('en');
     border: 1px solid var(--color-border);
     overflow: hidden;
     filter: grayscale(1);
-    transition: filter var(--transition-normal);
+    transition: filter 0.5s var(--ease-out-expo);
   }
 
   .contact-map__wrapper:hover {

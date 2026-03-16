@@ -53,7 +53,7 @@ const { icon, title, description, href, ctaLabel } = Astro.props;
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    transition: all var(--transition-normal);
+    transition: all 0.4s var(--ease-out-expo);
   }
 
   /* Top accent line */
@@ -66,13 +66,15 @@ const { icon, title, description, href, ctaLabel } = Astro.props;
     background: var(--color-accent);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform var(--transition-normal);
+    transition: transform 0.4s var(--ease-out-expo);
   }
 
   /* Hover: invert entire card */
   .service-card:hover {
     background: var(--color-accent);
     border-color: var(--color-accent);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-dramatic);
   }
 
   .service-card:hover .service-card__bar {
@@ -89,11 +91,7 @@ const { icon, title, description, href, ctaLabel } = Astro.props;
   }
 
   .service-card:hover .service-card__desc {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  [data-theme="dark"] .service-card:hover .service-card__desc {
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--color-surface) !important;
   }
 
   .service-card:hover .service-card__cta {

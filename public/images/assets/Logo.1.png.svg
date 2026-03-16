@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2, .cls-3 {
+        font-size: 39.759px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        font-family: Poppins;
+        font-weight: 600;
+      }
+
+      .cls-4 {
+        font-weight: 200;
+      }
+
+      .cls-5 {
+        fill: #0078ff;
+        fill-rule: evenodd;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#fff"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="House_Roof" data-name="House Roof" class="cls-1">
+    <text id="PRO_HOME" data-name="PRO HOME" class="cls-2" transform="translate(457.231 669.317) scale(6.288)"><tspan class="cls-3">PRO</tspan> <tspan class="cls-4">HOME</tspan></text>
+    <path class="cls-5" d="M505.175,408.474l-250.7,119.8L503.273,423.053l110.293,57.682Z"/>
+    <path class="cls-5" d="M407,406h34v28l-34,17V406Z"/>
+  </g>
+</svg>

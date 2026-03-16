@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 interface Benefit {
   icon: string;
@@ -10,6 +10,8 @@ interface Benefit {
 interface Props {
   sectionTitle: string;
   benefits: Benefit[];
+  seeMoreLabel?: string;
+  seeLessLabel?: string;
 }
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -35,7 +37,118 @@ const iconMap: Record<string, React.ReactNode> = {
   ),
 };
 
-export default function BenefitsSection({ sectionTitle, benefits }: Props) {
+function BenefitCard({ benefit, index, isInView, seeMoreLabel, seeLessLabel }: {
+  benefit: Benefit;
+  index: number;
+  isInView: boolean;
+  seeMoreLabel: string;
+  seeLessLabel: string;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
+      style={{
+        border: '1px solid var(--color-border)',
+        padding: 'var(--space-8)',
+        background: 'var(--color-surface)',
+        transition: 'border-color 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo)',
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = 'var(--color-accent)';
+        el.style.transform = 'translateY(-4px)';
+        el.style.boxShadow = 'var(--shadow-dramatic)';
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = 'var(--color-border)';
+        el.style.transform = 'translateY(0)';
+        el.style.boxShadow = 'none';
+      }}
+    >
+      <div style={{ color: 'var(--color-accent)', marginBottom: 'var(--space-4)' }}>
+        {iconMap[benefit.icon] || iconMap.support}
+      </div>
+      <h3 style={{
+        fontSize: 'var(--font-size-base)',
+        fontWeight: 'var(--font-weight-bold)',
+        color: 'var(--color-accent)',
+        marginBottom: 'var(--space-3)',
+        lineHeight: 'var(--line-height-tight)',
+      }}>
+        {benefit.title}
+      </h3>
+
+      {/* Description with 2-line clamp */}
+      <motion.div
+        animate={{ height: 'auto' }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        style={{ overflow: 'hidden' }}
+      >
+        <p style={{
+          fontSize: 'var(--font-size-sm)',
+          color: 'var(--color-text-secondary)',
+          lineHeight: 'var(--line-height-relaxed)',
+          margin: 0,
+          ...(!expanded ? {
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical' as const,
+            overflow: 'hidden',
+          } : {}),
+        }}>
+          {benefit.description}
+        </p>
+      </motion.div>
+
+      {/* See more / See less toggle */}
+      <button
+        onClick={() => setExpanded(!expanded)}
+        style={{
+          background: 'none',
+          border: 'none',
+          padding: 0,
+          marginTop: 'var(--space-2)',
+          fontSize: 'var(--font-size-xs)',
+          fontWeight: 'var(--font-weight-semibold)',
+          color: 'var(--color-accent)',
+          cursor: 'pointer',
+          letterSpacing: 'var(--letter-spacing-wider)',
+          textTransform: 'uppercase',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '4px',
+          transition: 'opacity 0.2s ease',
+        }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+      >
+        {expanded ? seeLessLabel : seeMoreLabel}
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="square"
+          style={{
+            transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+    </motion.div>
+  );
+}
+
+export default function BenefitsSection({ sectionTitle, benefits, seeMoreLabel = 'See more', seeLessLabel = 'See less' }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -71,40 +184,14 @@ export default function BenefitsSection({ sectionTitle, benefits }: Props) {
           }}
         >
           {benefits.map((b, i) => (
-            <motion.div
+            <BenefitCard
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-              style={{
-                border: '1px solid var(--color-border)',
-                padding: 'var(--space-8)',
-                background: 'var(--color-surface)',
-                transition: 'border-color var(--transition-fast)',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--color-accent)'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--color-border)'; }}
-            >
-              <div style={{ color: 'var(--color-accent)', marginBottom: 'var(--space-4)' }}>
-                {iconMap[b.icon] || iconMap.support}
-              </div>
-              <h3 style={{
-                fontSize: 'var(--font-size-base)',
-                fontWeight: 'var(--font-weight-bold)',
-                color: 'var(--color-accent)',
-                marginBottom: 'var(--space-3)',
-                lineHeight: 'var(--line-height-tight)',
-              }}>
-                {b.title}
-              </h3>
-              <p style={{
-                fontSize: 'var(--font-size-sm)',
-                color: 'var(--color-text-secondary)',
-                lineHeight: 'var(--line-height-relaxed)',
-              }}>
-                {b.description}
-              </p>
-            </motion.div>
+              benefit={b}
+              index={i}
+              isInView={isInView}
+              seeMoreLabel={seeMoreLabel}
+              seeLessLabel={seeLessLabel}
+            />
           ))}
         </div>
       </div>
