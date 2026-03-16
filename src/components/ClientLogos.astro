@@ -5,7 +5,7 @@ interface Props {
 
 const { title } = Astro.props;
 
-const allLogos = [
+const upperLogos = [
   { folder: 'Upper', file: 'clients_1.jpg' },
   { folder: 'Upper', file: 'clients_2.jpg' },
   { folder: 'Upper', file: 'clients_4.jpg' },
@@ -24,6 +24,9 @@ const allLogos = [
   { folder: 'Upper', file: 'clients_17.jpg' },
   { folder: 'Upper', file: 'clients_18.jpg' },
   { folder: 'Upper', file: 'clients_19.jpg' },
+];
+
+const downLogos = [
   { folder: 'Down', file: 'clients_20.jpg' },
   { folder: 'Down', file: 'clients_21.jpg' },
   { folder: 'Down', file: 'clients_22.jpg' },
@@ -48,11 +51,37 @@ const allLogos = [
   <div class="container">
     <h2 class="clients__title">{title}</h2>
 
+    <!-- Row 1: Upper logos, scroll left -->
     <div class="clients__track">
-      <div class="clients__marquee">
-        {[...allLogos, ...allLogos].map((logo) => (
+      <div class="clients__marquee clients__marquee--left">
+        {[...upperLogos, ...upperLogos].map((logo) => (
           <div class="clients__item">
-            <img src={`/images/assets/Brands/${logo.folder}/${logo.file}`} alt="Client logo" loading="lazy" />
+            <img
+              src={`/images/assets/Brands/${logo.folder}/${logo.file}`}
+              alt="Client logo"
+              loading="lazy"
+              decoding="async"
+              width="160"
+              height="80"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 2: Down logos, scroll right -->
+    <div class="clients__track">
+      <div class="clients__marquee clients__marquee--right">
+        {[...downLogos, ...downLogos].map((logo) => (
+          <div class="clients__item">
+            <img
+              src={`/images/assets/Brands/${logo.folder}/${logo.file}`}
+              alt="Client logo"
+              loading="lazy"
+              decoding="async"
+              width="160"
+              height="80"
+            />
           </div>
         ))}
       </div>
@@ -89,9 +118,17 @@ const allLogos = [
 
   .clients__marquee {
     display: flex;
-    gap: var(--space-4);
+    gap: var(--space-6);
     width: max-content;
-    animation: marquee 50s linear infinite;
+    will-change: transform;
+  }
+
+  .clients__marquee--left {
+    animation: marquee-left 60s linear infinite;
+  }
+
+  .clients__marquee--right {
+    animation: marquee-right 60s linear infinite;
   }
 
   .clients__item {
@@ -99,8 +136,8 @@ const allLogos = [
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 172px;
-    padding: 0 var(--space-3);
+    height: 100px;
+    padding: 0 var(--space-2);
     transition: transform 0.3s ease;
   }
 
@@ -109,12 +146,12 @@ const allLogos = [
   }
 
   .clients__item img {
-    height: 160px;
+    height: 80px;
     width: auto;
-    max-width: 240px;
+    max-width: 160px;
     object-fit: contain;
     filter: none;
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, opacity 0.3s ease;
     mix-blend-mode: multiply;
   }
 
@@ -132,12 +169,100 @@ const allLogos = [
     mix-blend-mode: screen;
   }
 
-  @keyframes marquee {
+  @keyframes marquee-left {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
 
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
   .clients__track:hover .clients__marquee {
     animation-play-state: paused;
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 1024px) {
+    .clients__item {
+      height: 80px;
+      padding: 0 var(--space-1);
+    }
+
+    .clients__item img {
+      height: 60px;
+      max-width: 120px;
+    }
+
+    .clients__marquee {
+      gap: var(--space-4);
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .clients {
+      padding: var(--space-6) 0;
+    }
+
+    .clients__title {
+      margin-bottom: var(--space-3);
+      font-size: 0.7rem;
+    }
+
+    .clients__item {
+      height: 40px;
+      padding: 0;
+    }
+
+    .clients__item img {
+      height: 32px;
+      max-width: 80px;
+    }
+
+    .clients__marquee {
+      gap: var(--space-3);
+    }
+
+    .clients__marquee--left {
+      animation-duration: 30s;
+    }
+
+    .clients__marquee--right {
+      animation-duration: 30s;
+    }
+
+    .clients__track {
+      margin-bottom: var(--space-1);
+    }
+  }
+
+  /* ── Small mobile ── */
+  @media (max-width: 480px) {
+    .clients {
+      padding: var(--space-5) 0;
+    }
+
+    .clients__item {
+      height: 36px;
+    }
+
+    .clients__item img {
+      height: 28px;
+      max-width: 64px;
+    }
+
+    .clients__marquee {
+      gap: var(--space-2);
+    }
+
+    .clients__marquee--left {
+      animation-duration: 25s;
+    }
+
+    .clients__marquee--right {
+      animation-duration: 25s;
+    }
   }
 </style>
