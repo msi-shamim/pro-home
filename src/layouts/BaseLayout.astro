@@ -16,7 +16,10 @@ interface Props {
 const { title, description } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const currentPath = Astro.url.pathname;
+// Normalize root path to /es/ for SEO (canonical, hreflang, OG)
+// so that / and /es/ don't compete as separate pages in search engines
+const rawPath = Astro.url.pathname;
+const currentPath = rawPath === '/' ? '/es/' : rawPath;
 ---
 
 <!doctype html>

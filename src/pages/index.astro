@@ -1,4 +1,662 @@
 ---
-/* Root index redirects to default locale */
-return Astro.redirect('/es');
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BenefitsSection from '../components/BenefitsSection.tsx';
+import ClientLogos from '../components/ClientLogos.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import SplitText from '../components/SplitText.tsx';
+import ScrollIndicator from '../components/ScrollIndicator.tsx';
+import { useTranslations } from '../i18n/index';
+
+const t = useTranslations('es');
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": t('faq.q1'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a1') } },
+    { "@type": "Question", "name": t('faq.q2'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a2') } },
+    { "@type": "Question", "name": t('faq.q3'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a3') } },
+    { "@type": "Question", "name": t('faq.q4'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a4') } },
+    { "@type": "Question", "name": t('faq.q5'), "acceptedAnswer": { "@type": "Answer", "text": t('faq.a5') } },
+  ]
+});
 ---
+
+<BaseLayout
+  title={t('seo.home_title')}
+  description={t('seo.home_description')}
+>
+  <script type="application/ld+json" set:html={faqSchema} slot="head" />
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <!-- Parallax background image -->
+    <div class="hero__bg" aria-hidden="true"></div>
+    <!-- Dark overlay -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <!-- Floating gradient orbs -->
+    <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+
+    <div class="container hero__content">
+      <p class="hero__label" data-reveal><span class="logo-bold">PRO</span> <span class="logo-thin">HOME</span>®</p>
+      <SplitText
+        client:load
+        text={t('hero.tagline')}
+        as="h1"
+        className="hero__headline"
+        style={{
+          fontSize: 'clamp(2rem, 6vw, 4rem)',
+          fontWeight: 900,
+          lineHeight: 1.1,
+          color: '#FFFFFF',
+          maxWidth: '700px',
+          margin: '0 auto var(--space-4)',
+          letterSpacing: '-0.02em',
+          textTransform: 'uppercase',
+          textAlign: 'center',
+        }}
+      />
+      <p class="hero__sub" data-reveal data-reveal-delay="2">{t('hero.subtitle')}</p>
+
+      <!-- Dual CTAs -->
+      <div class="hero__ctas" data-reveal data-reveal-delay="3">
+        <a href="/es/propietarios" class="hero__cta hero__cta--primary shimmer-hover" id="cta-propietarios">
+          {t('homepage.cta_propietarios')}
+        </a>
+        <a href="/es/empresas" class="hero__cta hero__cta--secondary" id="cta-empresas">
+          {t('homepage.cta_empresas')}
+        </a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="hero__contact" data-reveal data-reveal-delay="4">
+        <span>{t('contact.phone')}</span>
+        <span>·</span>
+        <span>{t('contact.email')}</span>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <ScrollIndicator client:load />
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <BenefitsSection
+    client:visible
+    sectionTitle={t('benefits.title')}
+    seeMoreLabel="Ver más"
+    seeLessLabel="Ver menos"
+    benefits={[
+      { icon: 'rates', title: t('benefits.best_rates_title'), description: t('benefits.best_rates_desc') },
+      { icon: 'tenants', title: t('benefits.tenant_mgmt_title'), description: t('benefits.tenant_mgmt_desc') },
+      { icon: 'maintenance', title: t('benefits.maintenance_title'), description: t('benefits.maintenance_desc') },
+      { icon: 'support', title: t('benefits.support_title'), description: t('benefits.support_desc') },
+    ]}
+  />
+
+  <!-- Services Overview -->
+  <section class="services-overview" id="services-overview">
+    <div class="container">
+      <h2 class="section-title" data-reveal>{t('homepage.services_title')}</h2>
+      <div class="services-overview__grid">
+        <div data-reveal data-reveal-delay="1">
+          <ServiceCard
+            icon="property"
+            title={t('services_detail.admin_title')}
+            description={t('services_detail.admin_desc')}
+            href="/es/servicios/administracion-propiedades"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+        <div data-reveal data-reveal-delay="2">
+          <ServiceCard
+            icon="corporate"
+            title={t('services_detail.corporate_title')}
+            description={t('services_detail.corporate_desc')}
+            href="/es/servicios/logistica-corporativa"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+        <div data-reveal data-reveal-delay="3">
+          <ServiceCard
+            icon="cleaning"
+            title={t('services_detail.short_term_title')}
+            description={t('services_detail.short_term_desc')}
+            href="/es/servicios/administracion-corto-plazo"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+        <div data-reveal data-reveal-delay="4">
+          <ServiceCard
+            icon="repair"
+            title={t('services_detail.investment_title')}
+            description={t('services_detail.investment_desc')}
+            href="/es/servicios/servicio-de-inversion"
+            ctaLabel={t('services_detail.cta_contact')}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <ClientLogos title={t('clients.title')} />
+
+  <!-- Google Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title" data-reveal>{t('homepage.reviews_title')}</h2>
+    </div>
+    <div class="reviews__track">
+      <div class="reviews__marquee">
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Es una empresa seria, comprometida y cumplidora; la cual nos permite poder dejar en sus manos las oportunidades que brinda el mercado. Se puede definir como empresa rápida, efectiva y precisa. Totalmente recomendable para arriendo o venta."</p>
+          <p class="reviews__author">— Rodrigo Bravo, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Quiero dar las gracias al equipo de ProHome por la ayuda que nos ha prestado, sobre todo en la gestión de los apartamentos. Como empresa extranjera, para nosotros es fundamental confiar en proveedores que nos proporcionen un buen servicio y una respuesta puntual."</p>
+          <p class="reviews__author">— Pedro Jordão, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Pro-Home corredora de propiedades profesional y seria, tengo una propiedad en arriendo con ellos durante el último año. La gestión de corretaje desde la entrega de la propiedad hasta hoy ha sido proactiva, atenta y siempre buscando soluciones."</p>
+          <p class="reviews__author">— Andrés Pinto C., Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Gratamente puedo señalar que la Empresa Pro-Home tiene un estándar de alta calidad, reflejada en la excelente atención personalizada y servicio de calidad. Recomendada en un 100% Felicitaciones!!"</p>
+          <p class="reviews__author">— Rosy Gallardo, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Siempre preocupados de mantener el departamento en óptimas condiciones e informando en forma mensual respecto al estado y como mejorar el servicio, los pagos puntuales. Un servicio de excelencia!!!!"</p>
+          <p class="reviews__author">— Daniel Valderrama, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Servicio, serio, ágil, profesional y rentable. Recomiendo 100%"</p>
+          <p class="reviews__author">— Arturo Vicent, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Agradezco el profesionalismo, dedicación y compromiso de Alessandra Malatesta en el trabajo encomendado, destacando su gran disposición a ayudar y dar solución a problemas, felicitaciones."</p>
+          <p class="reviews__author">— Patricio Alvarado Rojo, Google</p>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Es una empresa seria, comprometida y cumplidora; la cual nos permite poder dejar en sus manos las oportunidades que brinda el mercado. Se puede definir como empresa rápida, efectiva y precisa. Totalmente recomendable para arriendo o venta."</p>
+          <p class="reviews__author">— Rodrigo Bravo, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Quiero dar las gracias al equipo de ProHome por la ayuda que nos ha prestado, sobre todo en la gestión de los apartamentos. Como empresa extranjera, para nosotros es fundamental confiar en proveedores que nos proporcionen un buen servicio y una respuesta puntual."</p>
+          <p class="reviews__author">— Pedro Jordão, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Pro-Home corredora de propiedades profesional y seria, tengo una propiedad en arriendo con ellos durante el último año. La gestión de corretaje desde la entrega de la propiedad hasta hoy ha sido proactiva, atenta y siempre buscando soluciones."</p>
+          <p class="reviews__author">— Andrés Pinto C., Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Gratamente puedo señalar que la Empresa Pro-Home tiene un estándar de alta calidad, reflejada en la excelente atención personalizada y servicio de calidad. Recomendada en un 100% Felicitaciones!!"</p>
+          <p class="reviews__author">— Rosy Gallardo, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Siempre preocupados de mantener el departamento en óptimas condiciones e informando en forma mensual respecto al estado y como mejorar el servicio, los pagos puntuales. Un servicio de excelencia!!!!"</p>
+          <p class="reviews__author">— Daniel Valderrama, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Servicio, serio, ágil, profesional y rentable. Recomiendo 100%"</p>
+          <p class="reviews__author">— Arturo Vicent, Google</p>
+        </div>
+        <div class="reviews__card">
+          <span class="reviews__quote" aria-hidden="true">&ldquo;</span>
+          <div class="reviews__stars">★★★★★</div>
+          <p class="reviews__text">"Agradezco el profesionalismo, dedicación y compromiso de Alessandra Malatesta en el trabajo encomendado, destacando su gran disposición a ayudar y dar solución a problemas, felicitaciones."</p>
+          <p class="reviews__author">— Patricio Alvarado Rojo, Google</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title" data-reveal>{t('faq.title')}</h2>
+      <div class="faq__list">
+        <details class="faq__item" data-reveal data-reveal-delay="1">
+          <summary class="faq__question">{t('faq.q1')}</summary>
+          <p class="faq__answer">{t('faq.a1')}</p>
+        </details>
+        <details class="faq__item" data-reveal data-reveal-delay="2">
+          <summary class="faq__question">{t('faq.q2')}</summary>
+          <p class="faq__answer">{t('faq.a2')}</p>
+        </details>
+        <details class="faq__item" data-reveal data-reveal-delay="3">
+          <summary class="faq__question">{t('faq.q3')}</summary>
+          <p class="faq__answer">{t('faq.a3')}</p>
+        </details>
+        <details class="faq__item" data-reveal data-reveal-delay="4">
+          <summary class="faq__question">{t('faq.q4')}</summary>
+          <p class="faq__answer">{t('faq.a4')}</p>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary class="faq__question">{t('faq.q5')}</summary>
+          <p class="faq__answer">{t('faq.a5')}</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section" id="map" data-reveal>
+    <div class="map-section__wrapper">
+      <iframe
+        id="homepage-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.5!2d-70.3975!3d-23.6509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96a04efce526eb5d%3A0x4b0ae6b8ce7d1f0!2sAv.%20Balmaceda%202455%2C%20Antofagasta%2C%20Chile!5e0!3m2!1ses!2scl!4v1710000000000"
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="PRO HOME® Office — Av. Balmaceda 2455, Antofagasta"
+      ></iframe>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    margin-top: calc(var(--navbar-height) * -1);
+    padding: calc(var(--section-padding-y-hero) + var(--navbar-height)) 0 var(--section-padding-y);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Parallax background */
+  .hero__bg {
+    position: absolute;
+    inset: -10%;
+    background: url('/images/hero-bg.png') center/cover no-repeat;
+    z-index: 0;
+    will-change: transform;
+  }
+
+  /* Dark overlay */
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  /* Floating gradient orbs (monochrome) */
+  .hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero__orb--1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.04);
+    top: 10%;
+    left: -5%;
+    animation: orbFloat1 12s ease-in-out infinite;
+  }
+
+  .hero__orb--2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    bottom: 10%;
+    right: -5%;
+    animation: orbFloat2 15s ease-in-out infinite;
+  }
+
+  @keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -20px); }
+  }
+
+  @keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 30px); }
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-black);
+    letter-spacing: var(--letter-spacing-wider);
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__headline {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    color: #FFFFFF;
+    max-width: 700px;
+    margin: 0 auto var(--space-4);
+    letter-spacing: var(--letter-spacing-tight);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    .hero__headline {
+      font-size: var(--font-size-2xl) !important;
+    }
+  }
+
+  .hero__sub {
+    font-size: var(--font-size-md);
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--section-gap);
+  }
+
+  .hero__cta {
+    display: inline-block;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .hero__cta:hover {
+    opacity: 0.85;
+  }
+
+  .hero__cta--primary {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  .hero__cta--secondary {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #FFFFFF;
+  }
+
+  .hero__contact {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: var(--space-10);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--section-gap);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .services-overview {
+    padding: var(--section-padding-y) 0;
+  }
+
+  .services-overview__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .services-overview__grid > div {
+    display: flex;
+  }
+
+  .services-overview__grid > div > :global(.service-card) {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .services-overview__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .reviews {
+    padding: var(--section-padding-y) 0;
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .reviews__track {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .reviews__marquee {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: var(--space-5);
+    width: max-content;
+    animation: reviews-scroll 45s linear infinite;
+  }
+
+  .reviews__track:hover .reviews__marquee {
+    animation-play-state: paused;
+  }
+
+  .reviews__card {
+    flex-shrink: 0;
+    width: 360px;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    position: relative;
+    border-left: 3px solid var(--color-accent);
+    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
+  }
+
+  .reviews__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .reviews__quote {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-4);
+    font-size: 4rem;
+    font-weight: var(--font-weight-black);
+    color: var(--color-border);
+    line-height: 1;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .reviews__stars {
+    color: #F5A623;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-3);
+    letter-spacing: 2px;
+  }
+
+  .reviews__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: var(--line-height-relaxed);
+    font-style: italic;
+    margin-bottom: var(--space-3);
+  }
+
+  .reviews__author {
+    font-size: var(--font-size-xs);
+    color: var(--color-muted);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  @keyframes reviews-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* FAQ Section */
+  .faq {
+    padding: var(--section-padding-y) 0;
+    background: var(--color-surface);
+  }
+
+  .faq__list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+  }
+
+  /* Active accent line */
+  .faq__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s var(--ease-out-expo);
+  }
+
+  .faq__item[open]::before {
+    transform: scaleY(1);
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-6) 0;
+    padding-left: var(--space-4);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.25s var(--ease-out-expo);
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__question::after {
+    content: '+';
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-light);
+    color: var(--color-muted);
+    transition: transform 0.3s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
+    flex-shrink: 0;
+    margin-left: var(--space-4);
+  }
+
+  .faq__item[open] .faq__question {
+    color: var(--color-accent);
+  }
+
+  .faq__item[open] .faq__question::after {
+    content: '−';
+    color: var(--color-accent);
+    transform: rotate(180deg);
+  }
+
+  .faq__question:hover {
+    color: var(--color-accent);
+  }
+
+  .faq__answer {
+    padding: 0 0 var(--space-6) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Map Section */
+  .map-section {
+    padding: 0;
+  }
+
+  .map-section__wrapper {
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    filter: grayscale(1);
+    transition: filter var(--transition-normal);
+    line-height: 0;
+  }
+
+  .map-section__wrapper:hover {
+    filter: grayscale(0);
+  }
+
+  .map-section__wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+    min-height: 500px;
+  }
+
+  :global([data-theme="dark"]) .map-section__wrapper {
+    filter: grayscale(1) invert(1);
+  }
+
+  :global([data-theme="dark"]) .map-section__wrapper:hover {
+    filter: grayscale(0) invert(1);
+  }
+
+</style>
