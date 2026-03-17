@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('prohome-theme');
@@ -16,10 +16,14 @@ export default function ThemeToggle() {
   }, []);
 
   const toggle = () => {
-    const next = theme === 'light' ? 'dark' : 'light';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('prohome-theme', next);
+    setAnimating(true);
+    setTimeout(() => {
+      const next = theme === 'light' ? 'dark' : 'light';
+      setTheme(next);
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('prohome-theme', next);
+      setAnimating(false);
+    }, 150);
   };
 
   return (
@@ -41,43 +45,26 @@ export default function ThemeToggle() {
         overflow: 'hidden',
       }}
     >
-      <AnimatePresence mode="wait">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        style={{
+          transition: 'transform 0.2s ease, opacity 0.2s ease',
+          transform: animating ? 'rotate(90deg)' : 'rotate(0deg)',
+          opacity: animating ? 0 : 1,
+        }}
+      >
         {theme === 'light' ? (
-          <motion.svg
-            key="moon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="square"
-            strokeLinejoin="miter"
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </motion.svg>
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         ) : (
-          <motion.svg
-            key="sun"
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="square"
-            strokeLinejoin="miter"
-            initial={{ rotate: 90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: -90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
+          <>
             <circle cx="12" cy="12" r="5" />
             <line x1="12" y1="1" x2="12" y2="3" />
             <line x1="12" y1="21" x2="12" y2="23" />
@@ -87,9 +74,9 @@ export default function ThemeToggle() {
             <line x1="21" y1="12" x2="23" y2="12" />
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </motion.svg>
+          </>
         )}
-      </AnimatePresence>
+      </svg>
     </button>
   );
 }
