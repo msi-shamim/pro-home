@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.pro-home.cl',
+  site: 'https://pro-home.mvp5000.com',
   integrations: [react(), sitemap({
     i18n: {
       defaultLocale: 'es',
